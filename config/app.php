@@ -178,6 +178,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Elitasoft
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+
+
+
     ],
 
     /*
