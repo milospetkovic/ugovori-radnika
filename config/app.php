@@ -181,6 +181,8 @@ return [
         // Elitasoft
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        //Laracasts\Flash\Flash::class
+        Laracasts\Flash\FlashServiceProvider::class
 
 
 

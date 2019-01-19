@@ -3,9 +3,23 @@
 namespace App\Http\Controllers\Company;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Model\Managers\CompanyManager;
+//use Symfony\Component\HttpFoundation\Session\Flash;
 
 class CompanyController extends Controller
 {
+    /**
+     * @var CompanyManager
+     */
+    private $companyManager;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        $this->companyManager = new CompanyManager();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +37,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.create');
     }
 
     /**
@@ -34,7 +48,17 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+
+        $companyID = $this->companyManager->storeCompany($name);
+
+        flash("flash message");
+        //return back();
+
+
+
+        return redirect()->action('Company\CompanyController@create')->with('key', 'You have done successfully');;
+        //return redirect()->action('Techoperation\TechoperationController@actionView', ['id' => $techoperationID]);
     }
 
     /**
