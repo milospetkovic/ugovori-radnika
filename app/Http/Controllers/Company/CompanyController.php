@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Managers\CompanyManager;
-//use Symfony\Component\HttpFoundation\Session\Flash;
+use App\Helpers\EventMessages;
 
 class CompanyController extends Controller
 {
@@ -48,16 +48,18 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|unique:company|max:128'
+        ]);
+
         $name = $request->input('name');
 
         $companyID = $this->companyManager->storeCompany($name);
 
-        flash("flash message");
-        //return back();
+        flash(EventMessages::ACTION_SUCCESS, "success");
 
-
-
-        return redirect()->action('Company\CompanyController@create')->with('key', 'You have done successfully');;
+        return redirect()->action('Company\CompanyController@create');
         //return redirect()->action('Techoperation\TechoperationController@actionView', ['id' => $techoperationID]);
     }
 

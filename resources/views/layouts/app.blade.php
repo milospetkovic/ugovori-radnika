@@ -23,6 +23,16 @@
 <body>
     <div id="app">
 
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -100,7 +110,16 @@
     <script>
         $('#flash-overlay-modal').modal();
 
-        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+        $('div.alert').not('.alert-important').delay(2000).fadeOut(350);
     </script>
+
+    <style>
+       div.alert {
+           width: 250px;
+           position: absolute;
+           right: 20px;
+           z-index: 9999;
+       }
+    </style>
 </body>
 </html>

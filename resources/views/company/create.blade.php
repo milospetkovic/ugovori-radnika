@@ -7,7 +7,6 @@
 
             <div class="panel-body">
 
-
                 <form action="{{ action('Company\CompanyController@store') }}" method="post" class="form-horizontal">
 
                     {{ csrf_field() }}
@@ -22,7 +21,6 @@
                     </div>
 
                 </form>
-
 
             </div>
 
