@@ -107,4 +107,16 @@ class CompanyController extends Controller
     {
         //
     }
+
+    /**
+     * 
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function listCompanies()
+    {
+        $companies = $this->companyManager->returnAllCompanies();
+
+        return view('company.list', ['companies' => $companies]);
+    }
 }

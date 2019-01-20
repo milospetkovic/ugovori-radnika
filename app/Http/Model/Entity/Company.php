@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Http\Model\Entity;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -21,6 +21,8 @@ class Company extends Eloquent
      * @var string
      */
     protected $table = 'company';
+
+    public static $tbl_name = 'company';
 
     /**
      * @var array
