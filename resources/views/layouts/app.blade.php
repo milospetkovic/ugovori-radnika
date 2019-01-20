@@ -23,9 +23,6 @@
 <body>
     <div id="app">
 
-
-        @include('flash::message')
-
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -82,7 +79,16 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+
+                @include('flash::message')
+
+                @yield('content')
+
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -93,6 +99,8 @@
 
     <script>
         $('#flash-overlay-modal').modal();
+
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>
 </body>
 </html>
