@@ -19,7 +19,9 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
 </head>
+
 <body>
     <div id="app">
 
@@ -46,7 +48,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand glyphicon glyphicon-home" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
 
 class HomeController extends Controller
 {
@@ -18,11 +19,15 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
+     * If user is not logged redirect to the login form
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('home');
+        if (auth()->id()) {
+            return view('home');
+        }
+        return redirect()->route('/login');
     }
 }

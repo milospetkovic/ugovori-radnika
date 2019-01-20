@@ -60,7 +60,9 @@ class CompanyController extends Controller
         flash(EventMessages::ACTION_SUCCESS, "success");
 
         return redirect()->action('Company\CompanyController@create');
-        //return redirect()->action('Techoperation\TechoperationController@actionView', ['id' => $techoperationID]);
+
+        // use if redirect should be to the newly created company
+        //return redirect()->action('Company\CompanyController@show', ['id' => $companyID]);
     }
 
     /**
@@ -109,7 +111,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * 
+     *
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
