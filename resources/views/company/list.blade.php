@@ -10,9 +10,23 @@
 
             <div class="panel-body">
 
-                {{ var_dump($companies) }}
+                @if (count($companies))
 
+                    <ul class="list-group">
 
+                        @foreach($companies as $company)
+
+                            <li class="list-group-item"> {{ $company->name }} </li>
+
+                        @endforeach
+
+                    </ul>
+
+                @else
+
+                    <p>Nemate unetih komitenata</p>
+
+                @endif
 
             </div>
 
