@@ -30,6 +30,8 @@ class Worker extends Eloquent
      */
     protected $table = 'worker';
 
+    public static $tbl_name = 'worker';
+
     /**
      * @var array
      */

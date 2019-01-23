@@ -36,7 +36,8 @@ class WorkerController extends Controller
         $company = new CompanyManager();
         $companyObj = $company->getCompany($companyID);
 
-        $data = ['company_name' => $companyObj->name,
+        $data = [
+                 'company_name' => $companyObj->name,
                  'company_id' => $companyObj->id ];
 
         return view('worker.create', $data);
@@ -59,15 +60,11 @@ class WorkerController extends Controller
             'contract_end'      => 'required|date'
         ]);
 
-        $workerID = $this->workerManager->storeWorker();
+        $workerID = $this->workerManager->storeWorker($request, $companyID);
 
         if ($workerID > 0) {
             flash(EventMessages::ACTION_SUCCESS, "success");
+            return $this->create($request, $companyID);
         }
-
-        return redirect()->action('Worker\WorkerController@store');
-
-        // use if redirect should be to the newly created company
-        //return redirect()->action('Company\CompanyController@show', ['id' => $companyID]);
     }
 }

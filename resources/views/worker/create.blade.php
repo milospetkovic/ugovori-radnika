@@ -11,24 +11,27 @@
 
                     {{ csrf_field() }}
 
+
+                    <input type="text" name="fk_company" value="{{ $company_id }}">
+
                     <div class="">
                         <label for="name">Ime radnika</label>
-                        <input class="form-control" placeholder="" type="text" name="first_name">
+                        <input class="form-control" placeholder="" type="text" name="first_name" value="{{ old('first_name') }}">
                     </div>
 
                     <div class="">
                         <label for="name">Prezime radnika</label>
-                        <input class="form-control" placeholder="" type="text" name="last_name">
+                        <input class="form-control" placeholder="" type="text" name="last_name" value="{{ old('last_name') }}">
                     </div>
 
                     <div class="">
                         <label for="name">Datum pocetka ugovora</label>
-                        <input class="form-control" placeholder="" type="text" name="contract_start">
+                        <input class="form-control" placeholder="" type="text" name="contract_start" value="{{ old('contract_start') }}">
                     </div>
 
                     <div class="">
                         <label for="name">Datum kraja ugovora</label>
-                        <input class="form-control" placeholder="" type="text" name="contract_end">
+                        <input class="form-control" placeholder="" type="text" name="contract_end" value="{{ old('contract_end') }}">
                     </div>
 
                     <div class="mrg-t-10">

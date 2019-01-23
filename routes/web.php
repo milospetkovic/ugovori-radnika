@@ -28,5 +28,5 @@ Route::get('/company/list', 'Company\CompanyController@listCompanies');
 Route::get('/company/show/{id}', 'Company\CompanyController@show');
 
 
-Route::get('/company/show/{id}/worker/create', 'Worker\WorkerController@create');
+Route::get('/company/show/{id?}/worker/create', 'Worker\WorkerController@create')->name('create_worker_route');
 Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store');
