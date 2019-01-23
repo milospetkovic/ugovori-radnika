@@ -16,8 +16,8 @@
                         <input class="form-control" placeholder="" type="text" name="name" id="name">
                     </div>
 
-                    <div>
-                        <button type="submit" class="btn btn-primary m-r"><span class="fa fa-check"></span> Sacuvaj</button>
+                    <div class="mrg-t-10">
+                        <button type="submit" class="btn btn-primary m-r"><span class="fa fa-check"></span> Sačuvaj</button>
                     </div>
 
                 </form>
