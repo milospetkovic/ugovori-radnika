@@ -32,4 +32,9 @@ class CompanyManager
         return DB::table(CompanyEntity::$tbl_name)->get();
     }
 
+    public function returnCountAllCompanies()
+    {
+        return DB::table(CompanyEntity::$tbl_name)->count();
+    }
+
 }

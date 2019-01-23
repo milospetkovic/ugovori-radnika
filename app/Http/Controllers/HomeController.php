@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth;
+use App\Http\Model\Managers\CompanyManager;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,13 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->id()) {
-            return view('home');
+
+            $compManager = new CompanyManager();
+            $countCompanies = $compManager->returnCountAllCompanies();
+            if (!($countCompanies > 0)) {
+                $countCompanies = 0;
+            }
+            return view('home', ['companies_count' => $countCompanies]);
         }
         return redirect()->route('/login');
     }

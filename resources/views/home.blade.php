@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="row mrg-t-10 text-center clearfix">
-                    <a class="btn btn-info" href={{ action('Company\CompanyController@listCompanies') }}>Lista komitenata <span class="badge">2</span></a>
+                    <a class="btn btn-info" href={{ action('Company\CompanyController@listCompanies') }}>Lista komitenata <span class="badge">{{ $companies_count }}</span></a>
                 </div>
 
             </div>
