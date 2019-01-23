@@ -24,3 +24,8 @@ Route::get('/company', 'Company\CompanyController@show');
 Route::get('/company/create', 'Company\CompanyController@create');
 Route::post('/company/store', 'Company\CompanyController@store');
 Route::get('/company/list', 'Company\CompanyController@listCompanies');
+
+Route::get('/company/show/{id}', 'Company\CompanyController@show');
+
+
+Route::get('/company/show/{id}/worker/create', 'Worker\WorkerController@create');

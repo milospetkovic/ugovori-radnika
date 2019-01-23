@@ -73,7 +73,11 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = $this->companyManager->getCompany($id);
+
+        $data['company'] = $company;
+
+        return view('company.show', ['company' => $company]);
     }
 
     /**

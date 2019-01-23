@@ -14,8 +14,6 @@ use App\Http\Model\Entity\Company as CompanyEntity;
 
 class CompanyManager
 {
-
-
     public function storeCompany($name)
     {
         $companyID = DB::table(CompanyEntity::$tbl_name)
@@ -35,6 +33,13 @@ class CompanyManager
     public function returnCountAllCompanies()
     {
         return DB::table(CompanyEntity::$tbl_name)->count();
+    }
+
+
+    public function getCompany($id)
+    {
+        $company = DB::table(CompanyEntity::$tbl_name)->where('id', $id)->first();
+        return $company;
     }
 
 }
