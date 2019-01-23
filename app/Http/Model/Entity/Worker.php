@@ -33,7 +33,7 @@ class Worker extends Eloquent
     /**
      * @var array
      */
-    protected $fillable = ['fk_company', 'created_at', 'updated_at', 'first_name', 'last_name', 'description', 'inactive'];
+    protected $fillable = ['fk_company', 'created_at', 'updated_at', 'first_name', 'last_name', 'contract_start', 'contract_end', 'description', 'inactive'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
