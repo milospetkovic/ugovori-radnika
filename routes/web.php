@@ -29,3 +29,4 @@ Route::get('/company/show/{id}', 'Company\CompanyController@show');
 
 
 Route::get('/company/show/{id}/worker/create', 'Worker\WorkerController@create');
+Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store');

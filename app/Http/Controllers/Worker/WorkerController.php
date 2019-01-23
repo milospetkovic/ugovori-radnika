@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Worker;
 
+use App\Http\Model\Managers\CompanyManager;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Model\Managers\WorkerManager;
 use App\Helpers\EventMessages;
 
@@ -25,12 +27,28 @@ class WorkerController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request, $companyID)
+    {
+        $company = new CompanyManager();
+        $companyObj = $company->getCompany($companyID);
+
+        $data = ['company_name' => $companyObj->name,
+                 'company_id' => $companyObj->id ];
+
+        return view('worker.create', $data);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $companyID)
     {
 
         $this->validate($request, [
