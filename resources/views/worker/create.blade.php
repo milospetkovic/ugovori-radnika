@@ -3,7 +3,10 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading">Maska za unos novog radnika za komitenta: <strong>{{ $company_name }}</strong></div>
+            <div class="panel-heading">Maska za unos novog radnika za komitenta:
+                {{-- <strong>{{ $company_name }}</strong> --}}
+                <a class="btn btn-xs btn-info" href="/company/show/{{ $company_id }}">{{ $company_name }}</a>
+            </div>
 
             <div class="panel-body">
 
