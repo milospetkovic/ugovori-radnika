@@ -18,7 +18,7 @@
 
                             <li class="list-group-item">
                                 <a href="/company/show/{{ $company->id }}"> {{ $company->name }} </a>
-                                <span class="pull-right badge success" title="Broj radnika za komitenta">{{ $company_cnt_workers[$company->id] }}</span>
+                                <span class="pull-right badge alert-info" title="Broj radnika za komitenta">{{ $company_cnt_workers[$company->id] }}</span>
                             </li>
 
                         @endforeach
