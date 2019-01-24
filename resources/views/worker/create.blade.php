@@ -31,7 +31,7 @@
 
                     <div class="">
                         <label for="name">Datum kraja ugovora</label>
-                        <input class="form-control" placeholder="" type="text" name="contract_end" value="{{ old('contract_end') }}">
+                        <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ old('contract_end') }}">
                     </div>
 
                     <div class="mrg-t-10">
@@ -50,7 +50,17 @@
 
     <script type="text/javascript">
         $(function(){
-            $( "#contract_start" ).datetimepicker({});
+            $( "#contract_start").datetimepicker({
+                format: 'DD.MM.YYYY',
+                showTodayButton: true,
+                calendarWeeks: false
+            });
+
+            $( "#contract_end").datetimepicker({
+                format: 'DD.MM.YYYY',
+                showTodayButton: true,
+                calendarWeeks: false
+            });
         });
 
     </script>
