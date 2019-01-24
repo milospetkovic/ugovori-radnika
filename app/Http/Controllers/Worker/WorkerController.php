@@ -67,4 +67,19 @@ class WorkerController extends Controller
             return $this->create($request, $companyID);
         }
     }
+
+    /**
+     *
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function listWorkers()
+    {
+        $workers = $this->workerManager->returnAllWorkers()->toArray();
+
+        return view('worker.list', ['workers' => $workers ]);
+    }
+
+
+
 }

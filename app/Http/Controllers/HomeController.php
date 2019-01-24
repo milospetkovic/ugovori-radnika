@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Model\Managers\WorkerManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth;
 use App\Http\Model\Managers\CompanyManager;
@@ -33,7 +34,15 @@ class HomeController extends Controller
             if (!($countCompanies > 0)) {
                 $countCompanies = 0;
             }
-            return view('home', ['companies_count' => $countCompanies]);
+
+
+            $workerManager = new WorkerManager();
+            $countWorkers = $workerManager->countWorkers();
+            if (!($countWorkers > 0)) {
+                $countWorkers = 0;
+            }
+            return view('home', [ 'companies_count' => $countCompanies,
+                                        'workers_count' => $countWorkers ]);
         }
         return redirect()->route('/login');
     }

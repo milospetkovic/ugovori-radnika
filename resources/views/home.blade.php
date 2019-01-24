@@ -16,6 +16,10 @@
                     <a class="btn btn-info" href={{ action('Company\CompanyController@listCompanies') }}>Lista komitenata <span class="badge">{{ $companies_count }}</span></a>
                 </div>
 
+                <div class="row mrg-t-10 text-center clearfix">
+                    <a class="btn btn-info" href={{ action('Worker\WorkerController@listWorkers') }}>Lista radnika <span class="badge">{{ $workers_count }}</span></a>
+                </div>
+
             </div>
         </div>
     </div>

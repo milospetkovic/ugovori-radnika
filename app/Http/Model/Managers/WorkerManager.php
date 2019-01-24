@@ -39,5 +39,11 @@ class WorkerManager
     }
 
 
+    public function returnAllWorkers()
+    {
+        return DB::table(WorkerEntity::$tbl_name)->get();
+    }
+
+
 
 }
