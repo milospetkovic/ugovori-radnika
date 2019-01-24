@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Managers\CompanyManager;
 use App\Helpers\EventMessages;
+use App\Http\Model\Managers\WorkerManager;
 
 class CompanyController extends Controller
 {
@@ -14,11 +15,18 @@ class CompanyController extends Controller
      */
     private $companyManager;
 
+    /**
+     * @var WorkerManager
+     */
+    private $workerManager;
+
     public function __construct()
     {
         $this->middleware('auth');
 
         $this->companyManager = new CompanyManager();
+        $this->workerManager = new WorkerManager();
+
     }
     /**
      * Display a listing of the resource.
@@ -121,8 +129,16 @@ class CompanyController extends Controller
      */
     public function listCompanies()
     {
-        $companies = $this->companyManager->returnAllCompanies();
+        $companies = $this->companyManager->returnAllCompanies()->toArray();
+        $company_cnt_workers = [];
 
-        return view('company.list', ['companies' => $companies]);
+        if (is_array($companies) && count($companies)) {
+            foreach ($companies as $comp) {
+                $company_cnt_workers[$comp->id] = $this->workerManager->countWorkers($comp->id);
+            }
+        }
+
+        return view('company.list', ['companies' => $companies,
+                                           'company_cnt_workers' => $company_cnt_workers ]);
     }
 }

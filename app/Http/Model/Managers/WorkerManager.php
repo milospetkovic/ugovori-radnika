@@ -30,6 +30,14 @@ class WorkerManager
         return $workerID;
     }
 
+    public function countWorkers($fk_company=false)
+    {
+        if ($fk_company > 0) {
+            return DB::table(WorkerEntity::$tbl_name)->where('fk_company', $fk_company)->count();
+        }
+        return DB::table(WorkerEntity::$tbl_name)->count();
+    }
+
 
 
 }
