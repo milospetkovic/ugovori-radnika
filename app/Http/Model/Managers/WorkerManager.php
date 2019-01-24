@@ -23,8 +23,8 @@ class WorkerManager
                 'fk_company' => $companyID,
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
-                'contract_start' => '2018-01-01',
-                'contract_end' => '2019-02-18',
+                'contract_start' => date('Y-m-d', strtotime($request->contract_start)),
+                'contract_end' => date('Y-m-d', strtotime($request->contract_end))
             ]);
 
         return $workerID;
