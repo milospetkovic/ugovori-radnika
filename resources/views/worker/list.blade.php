@@ -12,6 +12,38 @@
 
                 @if (count($workers))
 
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Prezime</th>
+                                <th>Ime</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach($workers as $ind => $worker)
+                                <tr>
+                                    <td>#{{ $ind + 1 }}</td>
+                                    <td>{{ $worker->last_name }}</td>
+                                    <td>{{ $worker->first_name }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                @else
+
+                    <p>Nemate unetih radnika</p>
+
+                @endif
+
+
+                {{--
+
+
+                @if (count($workers))
+
                     <ul class="list-group">
 
                         @foreach($workers as $ind => $worker)
@@ -29,6 +61,8 @@
                     <p>Nemate unetih komitenata</p>
 
                 @endif
+
+                --}}
 
             </div>
 
