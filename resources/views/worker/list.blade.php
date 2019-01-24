@@ -26,9 +26,20 @@
 
                         <tbody>
                             @foreach($workers as $ind => $worker)
-                                <tr>
+
+                                <?php
+                                    $row_class = '';
+                                    if (strtotime($worker->contract_end) <= (time() + (2 * 86400))) {
+                                        $row_class = "bg-warning";
+                                    }
+                                    if ($worker->contract_end <= date('Y-m-d')) {
+                                        $row_class = "bg-danger";
+                                    }
+                                 ?>
+
+                                <tr class="{{ $row_class }}">
                                     <td>{{ $ind + 1 }}.</td>
-                                    <td>{{ $worker->company_name }}</td>
+                                    <td><a href="/company/show/{{ $worker->company_id }}">{{ $worker->company_name }}</a></td>
                                     <td>{{ $worker->last_name }}</td>
                                     <td>{{ $worker->first_name }}</td>
                                     <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>

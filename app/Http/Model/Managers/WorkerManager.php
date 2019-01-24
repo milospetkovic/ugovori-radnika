@@ -48,9 +48,8 @@ class WorkerManager
         return DB::table(WorkerEntity::$tbl_name.' as w ')
             ->leftJoin('company as c','c.id','=','w.fk_company')
             ->select([ "w.*", "c.id as company_id", "c.name as company_name" ])
+            ->orderBy('w.contract_end', 'asc')
             ->get();
     }
-
-
 
 }
