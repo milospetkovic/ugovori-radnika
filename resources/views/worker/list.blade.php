@@ -16,17 +16,23 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Kompanija</th>
                                 <th>Prezime</th>
                                 <th>Ime</th>
+                                <th>Početak ugovora</th>
+                                <th>Kraj ugovora</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($workers as $ind => $worker)
                                 <tr>
-                                    <td>#{{ $ind + 1 }}</td>
+                                    <td>{{ $ind + 1 }}.</td>
+                                    <td>{{ $worker->company_name }}</td>
                                     <td>{{ $worker->last_name }}</td>
                                     <td>{{ $worker->first_name }}</td>
+                                    <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>
+                                    <td>{{ date('d.m.Y', strtotime($worker->contract_end)) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -38,10 +38,17 @@ class WorkerManager
         return DB::table(WorkerEntity::$tbl_name)->count();
     }
 
-
     public function returnAllWorkers()
     {
         return DB::table(WorkerEntity::$tbl_name)->get();
+    }
+
+    public function returnWorkersAndCompanies()
+    {
+        return DB::table(WorkerEntity::$tbl_name.' as w ')
+            ->leftJoin('company as c','c.id','=','w.fk_company')
+            ->select([ "w.*", "c.id as company_id", "c.name as company_name" ])
+            ->get();
     }
 
 
