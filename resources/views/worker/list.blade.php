@@ -10,15 +10,14 @@
 
             <div class="panel-body">
 
-                @if (count($companies))
+                @if (count($workers))
 
                     <ul class="list-group">
 
-                        @foreach($companies as $company)
+                        @foreach($workers as $ind => $worker)
 
                             <li class="list-group-item">
-                                <a href="/company/show/{{ $company->id }}"> {{ $company->name }} </a>
-                                <span class="pull-right badge alert-info" title="Broj radnika za komitenta">{{ $company_cnt_workers[$company->id] }}</span>
+                                {{ $ind + 1 }} {{ $worker->last_name.' '.$worker->first_name }}
                             </li>
 
                         @endforeach
