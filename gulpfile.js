@@ -26,8 +26,8 @@ elixir((mix) => {
     mix.copy('resources/assets/vendor/datetimepicker/css/bootstrap-datetimepicker.css', 'public/css');
     mix.copy('resources/assets/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js', 'public/js');
 
-    // mix.copy('resources/assets/vendor/moment/js/moment-with-locales.min.js', 'public/js');
-    // mix.copy('resources/assets/vendor/moment/js/moment-timezone-with-data.min.js', 'public/js');
+    mix.copy('resources/assets/vendor/moment/js/moment-with-locales.min.js', 'public/js');
+    mix.copy('resources/assets/vendor/moment/js/moment-timezone-with-data.min.js', 'public/js');
 
     mix.copy('resources/assets/styles/elitasoft.css', 'public/css/elitasoft.css');
 });

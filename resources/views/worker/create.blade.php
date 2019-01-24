@@ -50,7 +50,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $( "#contract_start" ).datepicker({});
+            $( "#contract_start" ).datetimepicker({});
         });
 
     </script>

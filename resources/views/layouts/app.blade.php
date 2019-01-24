@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="/css/elitasoft.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -109,6 +110,9 @@
     </div>
 
     <script src="/js/app.js"></script>
+    <script src="/js/moment-timezone-with-data.min.js"></script>
+    <script src="/js/moment-with-locales.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
 
     @yield('pagescript')
     @yield('scripts')
