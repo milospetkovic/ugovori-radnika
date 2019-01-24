@@ -17,5 +17,16 @@ elixir((mix) => {
     mix.sass('app.scss')
        .webpack('app.js');
 
+
+    mix.copy('resources/assets/vendor/font-awesome/fonts', 'public/fonts');
+
+    mix.copy('resources/assets/vendor/bootstrap/fonts', 'public/fonts/bootstrap');
+
+
+    mix.copy('resources/assets/vendor/datetimepicker/css/bootstrap-datetimepicker.css', 'public/css');
+    mix.copy('resources/assets/vendor/datetimepicker/js/bootstrap-datetimepicker.min.js', 'public/js');
+    mix.copy('resources/assets/vendor/moment/js/moment-with-locales.min.js', 'public/js');
+    mix.copy('resources/assets/vendor/moment/js/moment-timezone-with-data.min.js', 'public/js');
+
     mix.copy('resources/assets/styles/elitasoft.css', 'public/css/elitasoft.css');
 });

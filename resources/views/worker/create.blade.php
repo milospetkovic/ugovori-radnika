@@ -12,7 +12,7 @@
                     {{ csrf_field() }}
 
 
-                    <input type="text" name="fk_company" value="{{ $company_id }}">
+                    <input type="hidden" name="fk_company" value="{{ $company_id }}">
 
                     <div class="">
                         <label for="name">Ime radnika</label>
@@ -26,7 +26,7 @@
 
                     <div class="">
                         <label for="name">Datum pocetka ugovora</label>
-                        <input class="form-control" placeholder="" type="text" name="contract_start" value="{{ old('contract_start') }}">
+                        <input class="form-control" placeholder="" type="text" name="contract_start" id="contract_start" value="{{ old('contract_start') }}">
                     </div>
 
                     <div class="">
@@ -44,4 +44,15 @@
 
         </div>
     </div>
+@endsection
+
+@section('pagescript')
+
+    <script type="text/javascript">
+        $(function(){
+            $( "#contract_start" ).datepicker({});
+        });
+
+    </script>
+
 @endsection

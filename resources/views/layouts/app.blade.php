@@ -15,6 +15,10 @@
     <link href="/css/elitasoft.css" rel="stylesheet">
 
     <!-- Scripts -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -104,25 +108,15 @@
 
     </div>
 
-    <!-- Scripts -->
     <script src="/js/app.js"></script>
 
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    @yield('pagescript')
+    @yield('scripts')
 
     <script>
         $('#flash-overlay-modal').modal();
-
         $('div.alert').not('.alert-important').delay(2000).fadeOut(350);
     </script>
 
-    <style>
-       div.alert {
-           width: 250px;
-           position: absolute;
-           right: 20px;
-           z-index: 9999;
-       }
-    </style>
 </body>
 </html>
