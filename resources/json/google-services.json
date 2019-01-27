@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "980275013099",
+    "firebase_url": "https://ferdil-pracenje-radnika.firebaseio.com",
+    "project_id": "ferdil-pracenje-radnika",
+    "storage_bucket": "ferdil-pracenje-radnika.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980275013099:android:3264ce2b5708d469",
+        "android_client_info": {
+          "package_name": "com.example.milos.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980275013099-o0l9vd02uehgl1gdk4va2479mheiin8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn_ycka4d1KnPmcF4NIcL3QpBmKyg4IEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
