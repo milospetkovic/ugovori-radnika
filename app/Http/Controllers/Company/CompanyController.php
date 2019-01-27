@@ -26,8 +26,8 @@ class CompanyController extends Controller
 
         $this->companyManager = new CompanyManager();
         $this->workerManager = new WorkerManager();
-
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -83,9 +83,12 @@ class CompanyController extends Controller
     {
         $company = $this->companyManager->getCompany($id);
 
+        $workers = $this->workerManager->returnWorkersAndCompanies($id)->toArray();
+
         $data['company'] = $company;
 
-        return view('company.show', ['company' => $company]);
+        return view('company.show', ['company' => $company,
+                                           'workers' => $workers ]);
     }
 
     /**

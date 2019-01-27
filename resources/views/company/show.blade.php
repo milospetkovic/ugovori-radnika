@@ -2,19 +2,36 @@
 
 @section('content')
 
-    <div class="col-md-8 col-md-offset-2">
+    <div class="row">
 
-        <div class="panel panel-default">
+        <div class="col-xs-12">
 
-            <div class="panel-heading">Komitent: {{ $company->name }}</div>
+            <div class="panel panel-default">
 
-            <div class="panel-body">
+                <div class="panel-heading">Komitent: {{ $company->name }}</div>
 
-                <a href="/company/show/{{ $company->id }}/worker/create" class="btn btn-primary m-r">Dodaj radnika</a>
+                <div class="panel-body">
 
+                    <a href="/company/show/{{ $company->id }}/worker/create" class="btn btn-primary m-r">Dodaj radnika</a>
+
+                    <hr>
+
+                    <div class="clearfix">
+
+                        <div class="row">
+
+                            @include('worker.list', [ 'extendLayout' => false ])
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
+
     </div>
-@endsection
+
+@overwrite

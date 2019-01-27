@@ -43,13 +43,16 @@ class WorkerManager
         return DB::table(WorkerEntity::$tbl_name)->get();
     }
 
-    public function returnWorkersAndCompanies()
+    public function returnWorkersAndCompanies($companyID=null)
     {
-        return DB::table(WorkerEntity::$tbl_name.' as w ')
+        $query = DB::table(WorkerEntity::$tbl_name.' as w ')
             ->leftJoin('company as c','c.id','=','w.fk_company')
-            ->select([ "w.*", "c.id as company_id", "c.name as company_name" ])
-            ->orderBy('w.contract_end', 'asc')
-            ->get();
+            ->select([ "w.*", "c.id as company_id", "c.name as company_name" ]);
+        if ($companyID > 0) {
+            $query->where('fk_company', $companyID);
+        }
+        $query->orderBy('w.contract_end', 'asc');
+        return $query->get();
     }
 
 }

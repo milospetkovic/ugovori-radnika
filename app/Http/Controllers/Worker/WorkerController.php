@@ -77,7 +77,8 @@ class WorkerController extends Controller
     {
         $workers = $this->workerManager->returnWorkersAndCompanies()->toArray();
 
-        return view('worker.list', ['workers' => $workers ]);
+        return view('worker.list', ['workers' => $workers,
+                                          'extendLayout' => true ]);
     }
 
 
