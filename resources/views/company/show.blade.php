@@ -20,7 +20,7 @@
 
                         <div class="row">
 
-                            @include('worker.list', [ 'extendLayout' => false ])
+                            @include('partials.worker.list')
 
                         </div>
 
