@@ -30,9 +30,11 @@ class FirebaseController extends Controller
         $config = new Configuration();
         $config->setAuthConfigFile(realpath(base_path('/resources/json/google-services.json')));
 
-        $firebase = new Firebase('https://ferdil-pracenje-radnika.firebaseio.com', $config);
+        //$firebase = new Firebase('https://ferdil-pracenje-radnika.firebaseio.com', $config);
 
-        $firebase->set(['key' => 'value'], 'my/data');
+        $firebase = new Firebase('https://fcm.googleapis.com/fcm/send', $config);
+
+        $firebase->set(['this_is_key' => 'this_is_value'], 'my/data');
 
         print_r($firebase->get('my/data'));
 

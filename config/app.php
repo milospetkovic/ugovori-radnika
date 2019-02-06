@@ -182,8 +182,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         //Laracasts\Flash\Flash::class
-        Laracasts\Flash\FlashServiceProvider::class
-
+        Laracasts\Flash\FlashServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class
 
 
     ],
@@ -233,6 +233,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'FCM'      => LaravelFCM\Facades\FCM::class,
 
     ],
 

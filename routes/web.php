@@ -35,4 +35,7 @@ Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store'
 Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
 
 
-Route::get('/firebase', 'Firebase\FirebaseController@index');
+//Route::get('/firebase', 'Firebase\FirebaseController@index');
+Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
+
+Route::get('/android/token/{token}', 'Android\TokenController@checkIfTokenShouldBeStored');
