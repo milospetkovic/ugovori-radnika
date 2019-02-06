@@ -38,4 +38,6 @@ Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
 //Route::get('/firebase', 'Firebase\FirebaseController@index');
 Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
 
-Route::get('/android/token/{token}', 'Android\TokenController@checkIfTokenShouldBeStored');
+Route::get('/android/token/{token}/{checkapptoken}', 'Android\TokenController@checkIfTokenShouldBeStored');
+
+//.env('ANDROID_SAVE_TOKEN_SAFE', null)

@@ -24,14 +24,18 @@ class TokenController extends Controller
         $this->androidTokenManager = new AndroidTokenManager();
     }
 
-    public function checkIfTokenShouldBeStored($token)
+    public function checkIfTokenShouldBeStored(Request $request, $token, $checkAppToken)
     {
-        if (strlen($token) > 100)
-        {
-            $doesTokenExist =  $this->androidTokenManager->doesTokenExist($token);
+        if (strlen($token) > 100 && strlen($checkAppToken) > 5) {
 
-            if (!$doesTokenExist) {
-                $this->androidTokenManager->storeToken($token);
+            // must check if calling route for saving android token has matching handshake token
+            if ($checkAppToken == env('ANDROID_SAVE_TOKEN_SAFE')) {
+
+                $doesTokenExist = $this->androidTokenManager->doesTokenExist($token);
+
+                if (!$doesTokenExist) {
+                    $this->androidTokenManager->storeToken($token);
+                }
             }
         }
     }
