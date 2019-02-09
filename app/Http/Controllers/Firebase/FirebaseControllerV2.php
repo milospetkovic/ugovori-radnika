@@ -56,7 +56,7 @@ class FirebaseControllerV2 extends Controller
         $notification = $notificationBuilder->build();
         $data = $dataBuilder->build();
 
-        $token = "djvw4Lz9_5A:APA91bEwdc7belP8iclp8Bop_hLiM0ZbRfFKBIVtSjETV9M5hoV5O8Lc_l6rKnaZlLnYto8vrNG2WyiXS6eMeiUEJenCnw2wElG2Bppsodnjh6sX20Q2PXF7qB64tESmS4_isqV8p16E";
+        $token = "cl7-0M7uZZc:APA91bFsysENe_EuCbt5B2axwfi8uycqyk1HiJSsQLKYmzv_HHg7Bv8wbRpFmTJgVqqFseTWThFPhoEqLqCi6R03cR4QJS2JsmmAgrUWy45UiIKCW93Yvsy0-2g8U2-0ATDUKrGTZNSZ";
 
         $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
