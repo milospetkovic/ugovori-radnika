@@ -21,8 +21,17 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 
-class FirebaseControllerV2 extends Controller
+class FirebaseBrozotController extends Controller
 {
+
+    /**
+     * FirebaseBrozotController constructor.
+     */
+    public function __construct()
+    {
+        // needed authentication for this controller
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -31,16 +40,6 @@ class FirebaseControllerV2 extends Controller
      */
     public function index()
     {
-//        //die('OK');
-//        $notificationBuilder = new PayloadNotificationBuilder();
-//        $notificationBuilder->setTitle('title')
-//            ->setBody('body')
-//            ->setSound('default');
-//
-//
-//        $notification = $notificationBuilder->build();
-//        die('zavrseno');
-
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
 
