@@ -20,9 +20,12 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
+use App\Http\Model\Services\SendNotificationToDevicesAboutWorkersService;
 
 class FirebaseBrozotController extends Controller
 {
+
+    private $sendMessageService;
 
     /**
      * FirebaseBrozotController constructor.
@@ -31,49 +34,14 @@ class FirebaseBrozotController extends Controller
     {
         // needed authentication for this controller
         $this->middleware('auth');
+
+        $this->sendMessageService = new SendNotificationToDevicesAboutWorkersService();
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function sendNotifications()
     {
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
 
-        $notificationBuilder = new PayloadNotificationBuilder('My_Title');
-        $notificationBuilder->setTitle('Ovo je title za app');
-        $notificationBuilder->setBody('Body za app..');
-        $notificationBuilder->setSound('default');
-
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
-
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $data = $dataBuilder->build();
-
-        $token = "cl7-0M7uZZc:APA91bFsysENe_EuCbt5B2axwfi8uycqyk1HiJSsQLKYmzv_HHg7Bv8wbRpFmTJgVqqFseTWThFPhoEqLqCi6R03cR4QJS2JsmmAgrUWy45UiIKCW93Yvsy0-2g8U2-0ATDUKrGTZNSZ";
-
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
-
-        $downstreamResponse->numberSuccess();
-        $downstreamResponse->numberFailure();
-        $downstreamResponse->numberModification();
-
-//return Array - you must remove all this tokens in your database
-        $downstreamResponse->tokensToDelete();
-
-//return Array (key : oldToken, value : new token - you must change the token in your database )
-        $downstreamResponse->tokensToModify();
-
-//return Array - you should try to resend the message to the tokens in the array
-        $downstreamResponse->tokensToRetry();
-
-
-
+        $this->sendMessageService->sendNotificationToAndroidDevices();
 
     }
 

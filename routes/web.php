@@ -36,7 +36,7 @@ Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
 //Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
 
 
-Route::get('/fb/sendnotifications', 'Firebase\FirebaseBrozotController@index');
+Route::get('/fb/sendnotifications', 'Firebase\FirebaseBrozotController@sendNotifications');
 
 
 //Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
