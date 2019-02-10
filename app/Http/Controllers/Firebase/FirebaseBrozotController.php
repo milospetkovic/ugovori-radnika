@@ -40,8 +40,13 @@ class FirebaseBrozotController extends Controller
 
     public function sendNotifications()
     {
+        $returnMesg = $this->sendMessageService->sendNotificationToAndroidDevices();
 
-        $this->sendMessageService->sendNotificationToAndroidDevices();
+        if (strlen($returnMesg)) {
+            flash($returnMesg, "warning");
+        }
+
+        return redirect()->action('HomeController@index');
 
     }
 

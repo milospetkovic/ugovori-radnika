@@ -33,4 +33,9 @@ class AndroidTokenManager
         return DB::table(AndroidTokenEntity::$tbl_name)->where('token', $token)->count();
     }
 
+    public function getAllTokens()
+    {
+        return DB::table(AndroidTokenEntity::$tbl_name)->get()->toArray();
+    }
+
 }

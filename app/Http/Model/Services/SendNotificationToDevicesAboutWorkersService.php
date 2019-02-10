@@ -8,50 +8,95 @@
 
 namespace App\Http\Model\Services;
 
-
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 
+use App\Http\Model\Managers\CompanyManager;
+use App\Http\Model\Managers\WorkerManager;
+use App\Http\Model\Managers\AndroidTokenManager;
 
 class SendNotificationToDevicesAboutWorkersService
 {
+    private $companyManager;
+    private $workerManager;
+    private $androidTokenManager;
+
+    /**
+     * Return message after sending notification
+     *
+     * @var
+     */
+    public $returnMessage='';
+
+    public function __construct()
+    {
+        $this->companyManager = new CompanyManager();
+        $this->workerManager = new WorkerManager();
+        $this->androidTokenManager = new AndroidTokenManager();
+    }
 
     public function sendNotificationToAndroidDevices()
     {
+        $cntWorkers = $this->workerManager->countWorkersWhichContractRunOut();
 
-        $optionBuilder = new OptionsBuilder();
-        $optionBuilder->setTimeToLive(60*20);
+        if ($cntWorkers) {
 
-        $notificationBuilder = new PayloadNotificationBuilder('My_Title');
-        $notificationBuilder->setTitle('Ovo je title za app');
-        $notificationBuilder->setBody('Body za app..');
-        $notificationBuilder->setSound('default');
+            $this->returnMessage = 'Imate ukupno '.$cntWorkers.' radnika kojima istice ugovor.';
 
-        $dataBuilder = new PayloadDataBuilder();
-        $dataBuilder->addData(['a_data' => 'my_data']);
+            $androidTokens = $this->androidTokenManager->getAllTokens();
 
-        $option = $optionBuilder->build();
-        $notification = $notificationBuilder->build();
-        $data = $dataBuilder->build();
+            if (is_array($androidTokens) && count($androidTokens)) {
 
-        $token = "cl7-0M7uZZc:APA91bFsysENe_EuCbt5B2axwfi8uycqyk1HiJSsQLKYmzv_HHg7Bv8wbRpFmTJgVqqFseTWThFPhoEqLqCi6R03cR4QJS2JsmmAgrUWy45UiIKCW93Yvsy0-2g8U2-0ATDUKrGTZNSZ";
+                foreach ($androidTokens as $androidToken) {
 
-        $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+                    $optionBuilder = new OptionsBuilder();
 
-        $downstreamResponse->numberSuccess();
-        $downstreamResponse->numberFailure();
-        $downstreamResponse->numberModification();
+                    // time to live message in the FCM (in seconds)
+                    $optionBuilder->setTimeToLive(60 * 60 * 12);
 
-//return Array - you must remove all this tokens in your database
-        $downstreamResponse->tokensToDelete();
+                    $notificationBuilder = new PayloadNotificationBuilder('Ferdil pracenje radnika');
+                    $notificationBuilder->setTitle('Isticanje ugovora');
+                    $notificationBuilder->setBody('Imate ukupno '.$cntWorkers.' radnika kojima istice ugovor');
+                    $notificationBuilder->setSound('default');
 
-//return Array (key : oldToken, value : new token - you must change the token in your database )
-        $downstreamResponse->tokensToModify();
+                    $dataBuilder = new PayloadDataBuilder();
+                    $dataBuilder->addData(['a_data' => 'my_data']);
 
-//return Array - you should try to resend the message to the tokens in the array
-        $downstreamResponse->tokensToRetry();
+                    $option = $optionBuilder->build();
+                    $notification = $notificationBuilder->build();
+                    $data = $dataBuilder->build();
+
+                    $token = $androidToken->token;
+
+                    $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+
+                    $downstreamResponse->numberSuccess();
+                    $downstreamResponse->numberFailure();
+                    $downstreamResponse->numberModification();
+
+                    //return Array - you must remove all this tokens in your database
+                    $downstreamResponse->tokensToDelete();
+
+                    //return Array (key : oldToken, value : new token - you must change the token in your database )
+                    $downstreamResponse->tokensToModify();
+
+                    //return Array - you should try to resend the message to the tokens in the array
+                    $downstreamResponse->tokensToRetry();
+                }
+
+                $this->returnMessage.= ' Notifikacije su poslate na ukupno '.count($androidTokens).' koji su registrovani u bazi.';
+            } else {
+                $this->returnMessage.= ' Notifikacije nisu poslate zato sto nemate nijedan uredjaj sa token-om registrovanog u bazi.';
+            }
+        } else {
+            $this->returnMessage = 'Nemate radnike kojima istice ugovor. Notifikacije nisu poslate!';
+        }
+
+        return $this->returnMessage;
+
+
     }
 
 }

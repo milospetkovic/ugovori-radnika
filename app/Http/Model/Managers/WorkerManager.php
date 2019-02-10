@@ -55,4 +55,9 @@ class WorkerManager
         return $query->get();
     }
 
+    public function countWorkersWhichContractRunOut()
+    {
+        return DB::table(WorkerEntity::$tbl_name)->where('contract_end', '<=', date('Y-m-d', (time() + 86400)))->count();
+    }
+
 }
