@@ -86,7 +86,7 @@ class SendNotificationToDevicesAboutWorkersService
                     $downstreamResponse->tokensToRetry();
                 }
 
-                $this->returnMessage.= ' Notifikacije su poslate na ukupno '.count($androidTokens).' koji su registrovani u bazi.';
+                $this->returnMessage.= ' Notifikacije su poslate na ukupno '.count($androidTokens).' android uredjaja koji su registrovani u bazi.';
             } else {
                 $this->returnMessage.= ' Notifikacije nisu poslate zato sto nemate nijedan uredjaj sa token-om registrovanog u bazi.';
             }
@@ -95,8 +95,6 @@ class SendNotificationToDevicesAboutWorkersService
         }
 
         return $this->returnMessage;
-
-
     }
 
 }
