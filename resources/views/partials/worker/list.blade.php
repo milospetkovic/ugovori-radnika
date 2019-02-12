@@ -12,19 +12,20 @@
 
                     <table class="table" id="table">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Kompanija</th>
-                            <th>Prezime</th>
-                            <th>Ime</th>
-                            <th>Početak ugovora</th>
-                            <th>Kraj ugovora</th>
-                            <th>JMBG</th>
-                            <th>Status</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Kompanija</th>
+                                <th>Prezime</th>
+                                <th>Ime</th>
+                                <th>Početak ugovora</th>
+                                <th>Kraj ugovora</th>
+                                <th>JMBG</th>
+                                <th>Status</th>
+                            </tr>
                         </thead>
 
                         <tbody>
+
                         @foreach($workers as $ind => $worker)
 
                             <?php
@@ -45,10 +46,10 @@
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_end)) }}</td>
                                 <td>{{ $worker->jmbg }}</td>
-
                                 <td>@if ($worker->inactive) NEAKTIVAN @else Aktivan @endif</td>
                             </tr>
                         @endforeach
+
                         </tbody>
                     </table>
 
