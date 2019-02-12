@@ -55,7 +55,10 @@ class WorkerController extends Controller
             'contract_start' => $workerObj->contract_start,
             'contract_end' => $workerObj->contract_end,
             'company_id' => $workerObj->company_id,
-            'company_name' => $workerObj->company_name ];
+            'company_name' => $workerObj->company_name,
+            'jmbg' => $workerObj->jmbg,
+            'status'=> ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan'
+        ];
 
         return view('worker.index', $data);
     }
@@ -91,15 +94,17 @@ class WorkerController extends Controller
             'first_name'        => 'required|max:128',
             'last_name'         => 'required|max:128',
             'contract_start'    => 'required|date',
-            'contract_end'      => 'required|date'
+            'contract_end'      => 'required|date',
         ]);
 
         $workerID = $this->workerManager->storeWorker($request, $companyID);
 
         if ($workerID > 0) {
             flash(EventMessages::ACTION_SUCCESS, "success");
-            return $this->create($request, $companyID);
+            return $this->show($request, $workerID);
         }
+
+        return $this->create($request, $companyID);
     }
 
     /**
@@ -123,7 +128,11 @@ class WorkerController extends Controller
                   'contract_start' => $workerObj->contract_start,
                   'contract_end' => $workerObj->contract_end,
                   'company_name' => $companyObj->name,
-                  'company_id' => $companyObj->id ];
+                  'company_id' => $companyObj->id,
+                  'jmbg' => $workerObj->jmbg,
+                  'status'=> ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan',
+                  'status_val' => $workerObj->inactive
+        ];
 
         return view('worker.index', $data);
     }

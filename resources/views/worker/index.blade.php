@@ -56,6 +56,16 @@
                             <td>{{ date('d.m.Y', strtotime($contract_end)) }}</td>
                         </tr>
 
+                        <tr>
+                            <td>JMBG:</td>
+                            <td>{{ $jmbg }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Status radnika:</td>
+                            <td>{{ $status }}</td>
+                        </tr>
+
                     </table>
 
                     <div class="mrg-t-10">
@@ -94,9 +104,14 @@
                             <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ old('contract_end') }}">
                         </div>
 
-                        <div class="mrg-t-10">
-                            <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
+                        <div class="">
+                            <label for="name">JMBG</label>
+                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ old('jmbg') }}">
+                        </div>
 
+                        <div class="mrg-t-10">
+
+                            <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
 
                             <a class="btn btn-default" href="{{ url()->previous() }}" class="btn btn-default">Prekini</a>
                         </div>
@@ -131,6 +146,19 @@
                             <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ date('d.m.Y', strtotime($contract_start)) }}">
                         </div>
 
+                        <div class="">
+                            <label for="name">JMBG</label>
+                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ old('jmbg') }}">
+                        </div>
+
+
+                        <div class="mrg-t-10">
+                            <label for="inactive">
+                                Deaktiviraj radnika
+                                <input class="mrg-l-5" id="inactive" type="checkbox" @if ($status_val == 1) checked @endif name="inactive" id="jmbg" value="1">
+                            </label>
+                        </div>
+
                         <div class="mrg-t-10">
 
                             <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
@@ -140,7 +168,6 @@
                         </div>
 
                     </form>
-
 
                 @endif
 

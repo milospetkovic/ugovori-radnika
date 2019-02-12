@@ -19,6 +19,8 @@
                             <th>Ime</th>
                             <th>Početak ugovora</th>
                             <th>Kraj ugovora</th>
+                            <th>JMBG</th>
+                            <th>Status</th>
                         </tr>
                         </thead>
 
@@ -42,6 +44,9 @@
                                 <td><a href="/worker/show/{{ $worker->id }}">{{ $worker->first_name }}</a></td>
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_end)) }}</td>
+                                <td>{{ $worker->jmbg }}</td>
+
+                                <td>@if ($worker->inactive) NEAKTIVAN @else Aktivan @endif</td>
                             </tr>
                         @endforeach
                         </tbody>

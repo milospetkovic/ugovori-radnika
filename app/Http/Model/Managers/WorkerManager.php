@@ -24,7 +24,9 @@ class WorkerManager
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'contract_start' => date('Y-m-d', strtotime($request->contract_start)),
-                'contract_end' => date('Y-m-d', strtotime($request->contract_end))
+                'contract_end' => date('Y-m-d', strtotime($request->contract_end)),
+                'jmbg' => ($request->jmbg) ? $request->jmbg : NULL,
+                'inactive' => $request->inactive
             ]);
 
         return $workerID;
@@ -78,33 +80,12 @@ class WorkerManager
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'contract_start' => date('Y-m-d', strtotime($request->contract_start)),
-                'contract_end' => date('Y-m-d', strtotime($request->contract_end))
+                'contract_end' => date('Y-m-d', strtotime($request->contract_end)),
+                'jmbg' => ($request->jmbg) ? $request->jmbg : NULL,
+                'inactive' => $request->inactive
             ]);
 
         return $workerID;
-    }
-
-
-    public function updateInquiry($data, $userID, $entity)
-    {
-        $inquiryID = $data['object_id'];
-
-        DB::table('elb_inquiry')->where('rowid', '=', $inquiryID)->update([
-
-            'ref_client' => $data['documentnumber'],
-            'entity' => $entity,
-            'fk_soc' => $data['customer'],
-            'fk_projet' => $data['project'],
-            'datep' => (string)date("Y-m-d", strtotime($data['requestdate'])),
-            'fk_input_reason' => $data['source'],
-            'fk_cond_reglement' => $data['paymentterms'],
-            'fk_incoterms' => $data['incoterms'],
-            'location_incoterms' => $data['location_incoterms'],
-            'note_public' => $data['notepublic'],
-            'note_private' => $data['noteprivate'],
-            'fk_currency' => $data['currency'],
-            'fk_user_modif' => $userID
-        ]);
     }
 
 }
