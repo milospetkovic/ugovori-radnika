@@ -30,6 +30,11 @@ Route::get('/company/show/{id}', 'Company\CompanyController@show');
 Route::get('/company/show/{id?}/worker/create', 'Worker\WorkerController@create')->name('create_worker_route');
 Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store');
 
+
+Route::get('/worker/show/{id}', 'Worker\WorkerController@show');
+Route::get('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@edit');
+Route::post('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@update');
+
 Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
 
 //Route::get('/firebase', 'Firebase\FirebaseController@index');
@@ -43,3 +48,5 @@ Route::get('/fb/sendnotifications', 'Firebase\FirebaseBrozotController@sendNotif
 
 // URI to save token sent from android device: token - sent from android device, checkapptoken: string saved in .env file and in android app (must match)
 Route::get('/android/token/{token}/{checkapptoken}', 'Android\TokenController@checkIfTokenShouldBeStored');
+
+

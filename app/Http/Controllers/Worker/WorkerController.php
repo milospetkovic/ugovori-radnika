@@ -27,6 +27,40 @@ class WorkerController extends Controller
     }
 
     /**
+     *
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function listWorkers()
+    {
+        $workers = $this->workerManager->returnWorkersAndCompanies()->toArray();
+
+        return view('worker.list', ['workers' => $workers,
+                                          'extendLayout' => true ]);
+    }
+
+    /**
+     * Show the view of the worker
+     *
+     */
+    public function show(Request $request, $workerID)
+    {
+        $workerObj = $this->workerManager->getWorker($workerID);
+
+        $data = [
+            'view_type' => 'view',
+            'id' => $workerObj->id,
+            'first_name' => $workerObj->first_name,
+            'last_name' => $workerObj->last_name,
+            'contract_start' => $workerObj->contract_start,
+            'contract_end' => $workerObj->contract_end,
+            'company_id' => $workerObj->company_id,
+            'company_name' => $workerObj->company_name ];
+
+        return view('worker.index', $data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,10 +71,11 @@ class WorkerController extends Controller
         $companyObj = $company->getCompany($companyID);
 
         $data = [
-                 'company_name' => $companyObj->name,
-                 'company_id' => $companyObj->id ];
+            'view_type' => 'create',
+            'company_name' => $companyObj->name,
+            'company_id' => $companyObj->id ];
 
-        return view('worker.create', $data);
+        return view('worker.index', $data);
     }
 
     /**
@@ -51,7 +86,6 @@ class WorkerController extends Controller
      */
     public function store(Request $request, $companyID)
     {
-
         $this->validate($request, [
             'fk_company'        => 'required|integer',
             'first_name'        => 'required|max:128',
@@ -69,18 +103,54 @@ class WorkerController extends Controller
     }
 
     /**
+     * Show form for edit worker
      *
-     *
+     * @param $companyID
+     * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function listWorkers()
+    public function edit($companyID, $id)
     {
-        $workers = $this->workerManager->returnWorkersAndCompanies()->toArray();
+        $company = new CompanyManager();
+        $companyObj = $company->getCompany($companyID);
 
-        return view('worker.list', ['workers' => $workers,
-                                          'extendLayout' => true ]);
+        $workerObj = $this->workerManager->getWorker($id);
+
+        $data = [ 'view_type' => 'edit',
+                  'id' => $workerObj->id,
+                  'first_name' => $workerObj->first_name,
+                  'last_name' => $workerObj->last_name,
+                  'contract_start' => $workerObj->contract_start,
+                  'contract_end' => $workerObj->contract_end,
+                  'company_name' => $companyObj->name,
+                  'company_id' => $companyObj->id ];
+
+        return view('worker.index', $data);
     }
 
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $companyID, $id)
+    {
+        $this->validate($request, [
+            'fk_company'        => 'required|integer',
+            'first_name'        => 'required|max:128',
+            'last_name'         => 'required|max:128',
+            'contract_start'    => 'required|date',
+            'contract_end'      => 'required|date'
+        ]);
+
+        $workerID = $this->workerManager->updateWorker($request, $companyID, $id);
+
+        if ($workerID > 0) {
+            flash(EventMessages::ACTION_SUCCESS, "success");
+            return $this->show($request, $id);
+        }
+    }
 
 }

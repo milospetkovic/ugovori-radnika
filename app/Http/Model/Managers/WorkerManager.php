@@ -60,4 +60,51 @@ class WorkerManager
         return DB::table(WorkerEntity::$tbl_name)->where('contract_end', '<=', date('Y-m-d', (time() + 86400)))->count();
     }
 
+    public function getWorker($id)
+    {
+        return DB::table(WorkerEntity::$tbl_name.' as w ')
+            ->leftJoin('company as c','c.id','=','w.fk_company')
+            ->select([ "w.*", "c.id as company_id", "c.name as company_name" ])
+            ->where('w.id', $id)->first();
+    }
+
+
+    public function updateWorker($request, $companyID, $workerID)
+    {
+        $workerID = DB::table(WorkerEntity::$tbl_name)->where('id', $workerID)
+            ->update
+            ([
+                'fk_company' => $companyID,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'contract_start' => date('Y-m-d', strtotime($request->contract_start)),
+                'contract_end' => date('Y-m-d', strtotime($request->contract_end))
+            ]);
+
+        return $workerID;
+    }
+
+
+    public function updateInquiry($data, $userID, $entity)
+    {
+        $inquiryID = $data['object_id'];
+
+        DB::table('elb_inquiry')->where('rowid', '=', $inquiryID)->update([
+
+            'ref_client' => $data['documentnumber'],
+            'entity' => $entity,
+            'fk_soc' => $data['customer'],
+            'fk_projet' => $data['project'],
+            'datep' => (string)date("Y-m-d", strtotime($data['requestdate'])),
+            'fk_input_reason' => $data['source'],
+            'fk_cond_reglement' => $data['paymentterms'],
+            'fk_incoterms' => $data['incoterms'],
+            'location_incoterms' => $data['location_incoterms'],
+            'note_public' => $data['notepublic'],
+            'note_private' => $data['noteprivate'],
+            'fk_currency' => $data['currency'],
+            'fk_user_modif' => $userID
+        ]);
+    }
+
 }

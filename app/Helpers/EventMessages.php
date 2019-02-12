@@ -14,4 +14,6 @@ class EventMessages
 
     const ACTION_SUCCESS = "Uspešno uradjeno";
 
+    const ACTION_ERROR = "Greška prilikom izvršavanja";
+
 }

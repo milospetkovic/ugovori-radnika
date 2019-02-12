@@ -38,8 +38,8 @@
                             <tr class="{{ $row_class }}">
                                 <td>{{ $ind + 1 }}.</td>
                                 <td><a href="/company/show/{{ $worker->company_id }}">{{ $worker->company_name }}</a></td>
-                                <td>{{ $worker->last_name }}</td>
-                                <td>{{ $worker->first_name }}</td>
+                                <td><a href="/worker/show/{{ $worker->id }}">{{ $worker->last_name }}</a></td>
+                                <td><a href="/worker/show/{{ $worker->id }}">{{ $worker->first_name }}</a></td>
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>
                                 <td>{{ date('d.m.Y', strtotime($worker->contract_end)) }}</td>
                             </tr>
