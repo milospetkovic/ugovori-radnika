@@ -143,12 +143,12 @@
 
                         <div class="">
                             <label for="name">Datum kraja ugovora</label>
-                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ date('d.m.Y', strtotime($contract_start)) }}">
+                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ date('d.m.Y', strtotime($contract_end)) }}">
                         </div>
 
                         <div class="">
                             <label for="name">JMBG</label>
-                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ old('jmbg') }}">
+                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ $jmbg  }}">
                         </div>
 
 
