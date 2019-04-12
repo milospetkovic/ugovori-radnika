@@ -96,4 +96,9 @@ class WorkerManager
         return $workerID;
     }
 
+    public function deleteWorker($id)
+    {
+        return DB::table(WorkerEntity::$tbl_name)->delete($id);
+    }
+
 }

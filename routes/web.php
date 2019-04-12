@@ -34,6 +34,7 @@ Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store'
 Route::get('/worker/show/{id}', 'Worker\WorkerController@show');
 Route::get('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@edit');
 Route::post('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@update');
+Route::get('/company/show/{company_id}/worker/{id}/delete', 'Worker\WorkerController@delete');
 
 Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
 

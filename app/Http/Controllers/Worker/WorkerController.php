@@ -162,4 +162,23 @@ class WorkerController extends Controller
         }
     }
 
+    /**
+     * Delete worker
+     *
+     * @param Request $request
+     * @param $companyID
+     * @param $id
+     */
+    public function delete(Request $request, $companyID, $id)
+    {
+        $res = $this->workerManager->deleteWorker($id);
+
+        if ($res > 0) {
+            flash(EventMessages::ACTION_SUCCESS, "success");
+            return redirect()->action('Company\CompanyController@show', $companyID);
+        }
+
+        flash(EventMessages::ACTION_ERROR, "error");
+    }
+
 }
