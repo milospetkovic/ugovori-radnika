@@ -56,7 +56,13 @@
                                     <td>{{ date('d.m.Y', strtotime($worker->contract_start)) }}</td>
                                     <td>{{ date('d.m.Y', strtotime($worker->contract_end)) }}</td>
                                     <td>{{ $worker->jmbg }}</td>
-                                    <td>@if ($worker->inactive) NEAKTIVAN @else Aktivan @endif</td>
+                                    <td>
+                                        @if ($worker->inactive)
+                                            <span class="badge text-danger text-muted" style="background: red !important">NEAKTIVAN</span>
+                                        @else
+                                            <span class="badge text-success text-muted" style="background: green !important; opacity: 0.5;">Aktivan</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
 
