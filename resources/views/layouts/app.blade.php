@@ -120,6 +120,9 @@
     <script>
         $('#flash-overlay-modal').modal();
         $('div.alert').not('.alert-important').delay(2000).fadeOut(350);
+        $('.show-unactive').click(function() {
+            $(this).closest('form').submit();
+        });
     </script>
 
 </body>
