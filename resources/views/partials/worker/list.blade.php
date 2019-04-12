@@ -4,39 +4,43 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Lista radnika</div>
+            <div class="panel-heading">
+                Lista radnika
+            </div>
 
             <div class="panel-body">
 
-                @if (count($workers))
+                @if (isset($company))
+                    <form method="get" action="{{ action('Company\CompanyController@show', ['id' => $company->id ]) }}">
+                @else
+                     <form method="get" action="{{ action('Worker\WorkerController@listWorkers') }}">
+                @endif
 
-                    @if (isset($company))
-                        <form method="get" action="{{ action('Company\CompanyController@show', ['id' => $company->id ]) }}">
-                    @else
-                        <form method="get" action="{{ action('Worker\WorkerController@listWorkers') }}">
-                    @endif
 
-                        <label>
-                            <input class="show-inactive" type="checkbox" @if($showinactive) checked @endif name="showinactive" value="1" @click="$(this).closest('form').submit();"> Prikaži i neaktivne
-                        </label>
 
-                        <div class="table-responsive">
+                    <label>
+                        <input class="show-inactive" type="checkbox" @if($showinactive) checked @endif name="showinactive" value="1" @click="$(this).closest('form').submit();"> Prikaži i neaktivne
+                    </label>
 
-                            <table class="table table-bordered table-hover" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Kompanija</th>
-                                        <th>Prezime</th>
-                                        <th>Ime</th>
-                                        <th>Početak ugovora</th>
-                                        <th>Kraj ugovora</th>
-                                        <th>JMBG</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
+                    <div class="table-responsive">
 
-                                <tbody>
+                        <table class="table table-bordered table-hover" id="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kompanija</th>
+                                    <th>Prezime</th>
+                                    <th>Ime</th>
+                                    <th>Početak ugovora</th>
+                                    <th>Kraj ugovora</th>
+                                    <th>JMBG</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                            @if (count($workers))
 
                                 @foreach($workers as $ind => $worker)
 
@@ -68,20 +72,22 @@
                                     </tr>
                                 @endforeach
 
-                                </tbody>
-                            </table>
+                            @else
 
-                        </div>
+                                <p class="bg-warning">Nemate unetih radnika</p>
 
-                    </form>
+                            @endif
 
-                @else
+                            </tbody>
+                        </table>
 
-                    <p>Nemate unetih radnika</p>
+                    </div>
 
-                @endif
+
 
             </div>
+
+            </form>
 
         </div>
     </div>
