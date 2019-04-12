@@ -31,11 +31,14 @@ class WorkerController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function listWorkers()
+    public function listWorkers(Request $request)
     {
-        $workers = $this->workerManager->returnWorkersAndCompanies()->toArray();
+        $showinactive = $request->get('showinactive');
 
-        return view('worker.list', ['workers' => $workers,
+        $workers = $this->workerManager->returnWorkersAndCompanies(null, $showinactive)->toArray();
+
+        return view('worker.list', [ 'showinactive' => $showinactive,
+                                          'workers' => $workers,
                                           'extendLayout' => true ]);
     }
 

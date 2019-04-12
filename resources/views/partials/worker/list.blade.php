@@ -17,7 +17,7 @@
                     @endif
 
                         <label>
-                            <input class="show-unactive" type="checkbox" value="1" @click="$(this).closest('form').submit();"> Prikaži i neaktivne
+                            <input class="show-inactive" type="checkbox" @if($showinactive) checked @endif name="showinactive" value="1" @click="$(this).closest('form').submit();"> Prikaži i neaktivne
                         </label>
 
                         <table class="table" id="table">

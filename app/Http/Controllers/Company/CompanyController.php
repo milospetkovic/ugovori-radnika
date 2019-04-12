@@ -81,14 +81,18 @@ class CompanyController extends Controller
      */
     public function show(Request $request, $id)
     {
+
+        $showinactive = $request->get('showinactive');
+
         $company = $this->companyManager->getCompany($id);
 
-        $workers = $this->workerManager->returnWorkersAndCompanies($id)->toArray();
+        $workers = $this->workerManager->returnWorkersAndCompanies($id, $showinactive)->toArray();
 
         $data['company'] = $company;
 
-        return view('company.show', ['company' => $company,
-                                           'workers' => $workers ]);
+        return view('company.show', [  'showinactive' => $showinactive,
+                                            'company' => $company,
+                                            'workers' => $workers ]);
     }
 
     /**

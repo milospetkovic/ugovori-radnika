@@ -45,7 +45,7 @@ class WorkerManager
         return DB::table(WorkerEntity::$tbl_name)->get();
     }
 
-    public function returnWorkersAndCompanies($companyID=null)
+    public function returnWorkersAndCompanies($companyID=null, $showUnactive=null)
     {
         $query = DB::table(WorkerEntity::$tbl_name.' as w ')
             ->leftJoin('company as c','c.id','=','w.fk_company')
@@ -53,21 +53,21 @@ class WorkerManager
         if ($companyID > 0) {
             $query->where('fk_company', $companyID);
         }
+        if ($showUnactive) {
+            // show all
+        } else {
+            $query->whereNull('w.inactive');
+        }
         $query->orderBy('w.contract_end', 'asc');
         return $query->get();
     }
 
     public function countWorkersWhichContractRunOut()
     {
-        //return DB::table(WorkerEntity::$tbl_name)->where('contract_end', '<=', date('Y-m-d', (time() + 86400)))->count();
-        //return DB::table(WorkerEntity::$tbl_name)->where(['contract_end', '<=', date('Y-m-d', (time() + 86400))], ['inactive', '<>', 1])->count();
-        //return DB::table(WorkerEntity::$tbl_name)->where(['contract_end', '<=', date('Y-m-d', (time() + 86400))], ['inactive', '!=', 1])->count();
         $sql = " SELECT COUNT(*) cnt from ".WorkerEntity::$tbl_name." where contract_end <= '".date('Y-m-d', (time() + 86400))."' AND (inactive <> 1 OR inactive IS NULL)";
         //print $sql;
         $res = DB::select($sql);
         return $res[0]->cnt;
-        //var_dump($res);
-        //die();
     }
 
     public function getWorker($id)
