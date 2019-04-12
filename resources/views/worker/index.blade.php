@@ -74,7 +74,7 @@
 
                         <a class="btn btn-default" href="{{ url()->previous() }}" class="btn btn-default">Nazad</a>
 
-                        <a onclick="if (!confirm('Da li zaista želite da obrišete radnika?')) return false;"  href="{{ action('Worker\WorkerController@delete', ['company_id' => $company_id, 'id' => $id]) }}" class="btn btn-danger pull-right"><span class="fa fa-check"></span> Ažuriraj</a>
+                        <a onclick="if (!confirm('Da li zaista želite da obrišete radnika?')) return false;"  href="{{ action('Worker\WorkerController@delete', ['company_id' => $company_id, 'id' => $id]) }}" class="btn btn-danger pull-right"><span class="fa fa-check"></span>Obriši</a>
 
                     </div>
 

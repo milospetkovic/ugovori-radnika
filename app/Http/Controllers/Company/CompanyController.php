@@ -144,4 +144,26 @@ class CompanyController extends Controller
         return view('company.list', ['companies' => $companies,
                                            'company_cnt_workers' => $company_cnt_workers ]);
     }
+
+    /**
+     * Delete company
+     *
+     * @param Request $request
+     * @param $id
+     */
+    public function delete(Request $request, $id)
+    {
+        $res = $this->companyManager->deleteCompany($id);
+
+        if ($res > 0) {
+            flash(EventMessages::ACTION_SUCCESS, "success");
+            return redirect()->action('Company\CompanyController@listCompanies');
+        }
+
+        flash(EventMessages::ACTION_ERROR, "error");
+            return redirect()->action('Company\CompanyController@show', $id);
+    }
+
+
+
 }

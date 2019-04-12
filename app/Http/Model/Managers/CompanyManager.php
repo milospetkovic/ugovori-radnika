@@ -42,4 +42,9 @@ class CompanyManager
         return $company;
     }
 
+    public function deleteCompany($id)
+    {
+        return DB::table(CompanyEntity::$tbl_name)->delete($id);
+    }
+
 }

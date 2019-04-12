@@ -14,6 +14,8 @@
 
                     <a href="/company/show/{{ $company->id }}/worker/create" class="btn btn-primary m-r">Dodaj radnika</a>
 
+                    <a onclick="if (!confirm('Da li zaista želite da obrišete komitenta?')) return false;"  href="{{ action('Company\CompanyController@delete', ['company_id' => $company->id ]) }}" class="btn btn-danger pull-right"><span class="fa fa-check"></span>Obriši</a>
+
                     <hr>
 
                     <div class="clearfix">
