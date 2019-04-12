@@ -32,10 +32,16 @@ class WorkerManager
         return $workerID;
     }
 
-    public function countWorkers($fk_company=false)
+    public function countWorkers($fk_company=false, $onlyInactive=false)
     {
         if ($fk_company > 0) {
+            if ($onlyInactive) {
+                return DB::table(WorkerEntity::$tbl_name)->where('fk_company', $fk_company)->where('inactive', 1)->count();
+            }
             return DB::table(WorkerEntity::$tbl_name)->where('fk_company', $fk_company)->count();
+        }
+        if ($onlyInactive) {
+            return DB::table(WorkerEntity::$tbl_name)->where('inactive', 1)->count();
         }
         return DB::table(WorkerEntity::$tbl_name)->count();
     }

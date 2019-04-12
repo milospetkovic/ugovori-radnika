@@ -41,8 +41,15 @@ class HomeController extends Controller
             if (!($countWorkers > 0)) {
                 $countWorkers = 0;
             }
+            if ($countWorkers) {
+                $countInactiveWorkers = $workerManager->countWorkers(null, 1);
+            }
+            if (!($countInactiveWorkers > 0)) {
+                $countInactiveWorkers = 0;
+            }
             return view('home', [ 'companies_count' => $countCompanies,
-                                        'workers_count' => $countWorkers ]);
+                                        'workers_count' => $countWorkers,
+                                        'inactive_workers_count' => $countInactiveWorkers ]);
         }
         return redirect()->route('/login');
     }

@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="row mrg-t-10 text-center clearfix">
-                    <a class="btn btn-info" href={{ action('Worker\WorkerController@listWorkers') }}>Lista radnika <span class="badge">{{ $workers_count }}</span></a>
+                    <a class="btn btn-info" href={{ action('Worker\WorkerController@listWorkers') }}>Lista radnika <span class="badge">{{ $workers_count }}@if($inactive_workers_count) <span title="Broj neaktivnih korisnika">({{ $inactive_workers_count }})</span>@endif</span></a>
                 </div>
 
                 <div class="row mrg-t-10 text-center clearfix">

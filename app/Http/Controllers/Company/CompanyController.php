@@ -138,15 +138,18 @@ class CompanyController extends Controller
     {
         $companies = $this->companyManager->returnAllCompanies()->toArray();
         $company_cnt_workers = [];
+        $company_cnt_inactive_workers = [];
 
         if (is_array($companies) && count($companies)) {
             foreach ($companies as $comp) {
                 $company_cnt_workers[$comp->id] = $this->workerManager->countWorkers($comp->id);
+                $company_cnt_inactive_workers[$comp->id] = $this->workerManager->countWorkers($comp->id, 1);
             }
         }
 
-        return view('company.list', ['companies' => $companies,
-                                           'company_cnt_workers' => $company_cnt_workers ]);
+        return view('company.list', [  'companies' => $companies,
+                                            'company_cnt_workers' => $company_cnt_workers,
+                                            'company_cnt_inactive_workers' => $company_cnt_inactive_workers ]);
     }
 
     /**
