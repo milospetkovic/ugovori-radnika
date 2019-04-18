@@ -79,7 +79,6 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu10">
-                                    <li role="presentation">TEST</li>
                                     <li role="presentation">
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
