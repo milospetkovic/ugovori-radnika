@@ -72,7 +72,7 @@
 
                         <a href="{{ action('Worker\WorkerController@edit', ['company_id' => $company_id, 'id' => $id]) }}" class="btn btn-warning mrg-r-5"><span class="fa fa-check"></span> Ažuriraj</a>
 
-                        <a class="btn btn-default" href="{{ url()->previous() }}" class="btn btn-default">Nazad</a>
+                        <a class="btn btn-default" href="{{ action('Company\CompanyController@show', ['id' => $company_id ]) }}" class="btn btn-default">Nazad</a>
 
                         <a onclick="if (!confirm('Da li zaista želite da obrišete radnika?')) return false;"  href="{{ action('Worker\WorkerController@delete', ['company_id' => $company_id, 'id' => $id]) }}" class="btn btn-danger pull-right"><span class="fa fa-check"></span>Obriši</a>
 
@@ -115,7 +115,7 @@
 
                             <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
 
-                            <a class="btn btn-default" href="{{ url()->previous() }}" class="btn btn-default">Prekini</a>
+                            <a class="btn btn-default" href="{{ action('Company\CompanyController@show', ['id' => $company_id ]) }}" class="btn btn-default">Prekini</a>
                         </div>
 
                     </form>
@@ -165,7 +165,7 @@
 
                             <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
 
-                            <a class="btn btn-default" href="{{ url()->previous() }}" class="btn btn-default">Prekini</a>
+                            <a class="btn btn-default" href="{{ action('Company\CompanyController@show', ['id' => $company_id ]) }}" class="btn btn-default">Prekini</a>
 
                         </div>
 
