@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row">
+
 
         <div class="col-xs-12">
 
@@ -12,23 +12,11 @@
 
                 <div class="panel-body">
 
-                    <a href="/company/show/{{ $company->id }}/worker/create" class="btn btn-primary m-r">Dodaj radnika</a>
+                    <a href="/company/show/{{ $company->id }}/worker/create" class="btn btn-sm btn-primary m-r">Dodaj radnika</a>
 
-                    <a href="{{ action('HomeController@index') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
+                    <a href="{{ action('HomeController@index') }}" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
 
-                    <a onclick="if (!confirm('Da li zaista želite da obrišete komitenta?')) return false;"  href="{{ action('Company\CompanyController@delete', ['company_id' => $company->id ]) }}" class="btn btn-danger pull-right"><span class="fa fa-check"></span>Obriši</a>
-
-                    <hr>
-
-                    <div class="clearfix">
-
-                        <div class="row">
-
-                            @include('partials.worker.list')
-
-                        </div>
-
-                    </div>
+                    <a onclick="if (!confirm('Da li zaista želite da obrišete komitenta?')) return false;"  href="{{ action('Company\CompanyController@delete', ['company_id' => $company->id ]) }}" class="btn btn-sm btn-danger pull-right"><span class="fa fa-check"></span>Obriši</a>
 
                 </div>
 
@@ -36,6 +24,12 @@
 
         </div>
 
-    </div>
+        <div class="clearfix">
+
+            @include('partials.worker.list')
+
+        </div>
+
+
 
 @endsection
