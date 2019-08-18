@@ -1,0 +1,15 @@
+.mrg-t-10 {
+    margin-top: 10px;
+}
+.mrg-r-5 {
+    margin-right: 5px;
+}
+.mrg-l-5 {
+    margin-left: 5px;
+}
+div.alert {
+    width: 250px;
+    position: absolute;
+    right: 20px;
+    z-index: 9999;
+}

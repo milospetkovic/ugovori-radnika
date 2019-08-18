@@ -6,7 +6,13 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Lista komitenata</div>
+            <div class="panel-heading">
+                Lista komitenata
+                <a href="{{ action('HomeController@index') }}" class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
+                <div class="clearfix">
+                    <!-- -->
+                </div>
+            </div>
 
             <div class="panel-body">
 

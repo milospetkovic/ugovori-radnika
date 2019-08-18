@@ -6,6 +6,12 @@
 
             <div class="panel-heading">
                 Lista radnika
+                @if (!isset($company))
+                    <a href="{{ action('HomeController@index') }}" class="btn btn-default pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
+                @endif
+                <div class="clearfix">
+                    <!-- -->
+                </div>
             </div>
 
             <div class="panel-body">
