@@ -90,7 +90,7 @@ class WorkerManager
 
     public function updateWorker($request, $companyID, $workerID)
     {
-        $workerID = DB::table(WorkerEntity::$tbl_name)->where('id', $workerID)
+        $res = DB::table(WorkerEntity::$tbl_name)->where('id', $workerID)
             ->update
             ([
                 'fk_company' => $companyID,
@@ -105,7 +105,7 @@ class WorkerManager
                 'description' => ($request->description) ? $request->description : NULL,
             ]);
 
-        return $workerID;
+        return $res;
     }
 
     public function deleteWorker($id)

@@ -82,7 +82,7 @@
 
                         <tr>
                             <td>Beleska:</td>
-                            <td>{{ $description }}</td>
+                            <td>{!! $description !!}</td>
                         </tr>
 
                     </table>

@@ -165,9 +165,9 @@ class WorkerController extends Controller
             //'active_until_date' => 'date',
         ]);
 
-        $workerID = $this->workerManager->updateWorker($request, $companyID, $id);
+        $res = $this->workerManager->updateWorker($request, $companyID, $id);
 
-        if ($workerID > 0) {
+        if ($res >= 0) {
             flash(EventMessages::ACTION_SUCCESS, "success");
             return $this->show($request, $id);
         }
