@@ -21,7 +21,15 @@ class UnactivateWorkersService
 
     public function unactivateWorkersIfConditionIsFulfilled()
     {
-        
+        $cntWorkers = $this->workerManager->unactivateWorkersIfConditionIsFulfilled();
+
+        if ($cntWorkers) {
+            $this->returnMessage = 'Ukupno '.$cntWorkers.' radnika je automatski deaktivirano.';
+        } else {
+            $this->returnMessage = 'Nema radnika koji ispunjavaju uslov za deaktivaciju.';
+        }
+
+        return $this->returnMessage;
     }
 
 }

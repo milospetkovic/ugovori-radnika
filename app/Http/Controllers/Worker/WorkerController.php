@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Worker;
 
 use App\Http\Model\Managers\CompanyManager;
+use App\Http\Model\Services\UnactivateWorkersService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Managers\WorkerManager;
@@ -15,6 +16,10 @@ class WorkerController extends Controller
      * @var WorkerManager
      */
     private $workerManager;
+    /**
+     * @var UnactivateWorkersService
+     */
+    private $sendMessageService;
 
     /**
      * WorkerController constructor.
@@ -24,6 +29,7 @@ class WorkerController extends Controller
         $this->middleware('auth');
 
         $this->workerManager = new WorkerManager();
+        $this->sendMessageService = new UnactivateWorkersService();
     }
 
     /**
@@ -190,6 +196,18 @@ class WorkerController extends Controller
         }
 
         flash(EventMessages::ACTION_ERROR, "error");
+    }
+
+    public function unactivateWorkers()
+    {
+        $returnMesg = $this->sendMessageService->unactivateWorkersIfConditionIsFulfilled();
+
+        if (strlen($returnMesg)) {
+            flash($returnMesg, "warning");
+        }
+
+        return redirect()->action('HomeController@index');
+
     }
 
 }

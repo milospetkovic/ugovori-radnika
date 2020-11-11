@@ -10,6 +10,7 @@ namespace App\Http\Model\Managers;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Model\Entity\Worker as WorkerEntity;
+use Carbon\Carbon;
 
 
 class WorkerManager
@@ -111,6 +112,19 @@ class WorkerManager
     public function deleteWorker($id)
     {
         return DB::table(WorkerEntity::$tbl_name)->delete($id);
+    }
+
+    public function unactivateWorkersIfConditionIsFulfilled()
+    {
+        $sql = " SELECT COUNT(*) cnt from ".WorkerEntity::$tbl_name." where active_until_date IS NOT NULL AND active_until_date <= '".date('Y-m-d')."' AND (inactive != 1 OR inactive IS NULL)";
+        $res = DB::select($sql);
+        $cnt = $res[0]->cnt;
+
+        if ($cnt) {
+            $sql = " UPDATE ".WorkerEntity::$tbl_name." SET inactive=1 where active_until_date IS NOT NULL AND active_until_date <= '".date('Y-m-d')."' AND (inactive != 1 OR inactive IS NULL)";
+            $res = DB::update($sql);
+        }
+        return $cnt;
     }
 
 }

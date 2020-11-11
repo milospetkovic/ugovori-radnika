@@ -24,6 +24,10 @@
                     <a class="btn btn-warning" href={{ action('Firebase\FirebaseBrozotController@sendNotifications') }}>Testiraj slanje notifikacija</a>
                 </div>
 
+                <div class="row mrg-t-10 text-center clearfix">
+                    <a class="btn btn-warning" href={{ action('Worker\WorkerController@unactivateWorkers') }}>Pokreni deaktivaciju radnika</a>
+                </div>
+
             </div>
         </div>
     </div>
