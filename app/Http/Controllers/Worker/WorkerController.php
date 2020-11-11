@@ -138,7 +138,10 @@ class WorkerController extends Controller
                   'company_id' => $companyObj->id,
                   'jmbg' => $workerObj->jmbg,
                   'status'=> ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan',
-                  'status_val' => $workerObj->inactive
+                  'status_val' => $workerObj->inactive,
+                  'active_until_date' => $workerObj->active_until_date,
+                  'send_contract_ended_notification' => $workerObj->send_contract_ended_notification,
+                  'description' => $workerObj->description
         ];
 
         return view('worker.index', $data);
@@ -158,7 +161,8 @@ class WorkerController extends Controller
             'first_name'        => 'required|max:128',
             'last_name'         => 'required|max:128',
             'contract_start'    => 'required|date',
-            'contract_end'      => 'required|date'
+            'contract_end'      => 'required|date',
+            'active_until_date' => 'date',
         ]);
 
         $workerID = $this->workerManager->updateWorker($request, $companyID, $id);

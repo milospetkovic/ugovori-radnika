@@ -186,7 +186,6 @@
                             <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ $jmbg  }}">
                         </div>
 
-
                         <div class="mrg-t-10">
                             <label for="inactive">
                                 Deaktiviraj radnika
@@ -195,11 +194,25 @@
                         </div>
 
                         <div class="mrg-t-10">
+                            <label for="active_until_date">Aktivan do datuma</label>
+                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="@if ($active_until_date){{ date('d.m.Y', strtotime($active_until_date)) }}@endif">
+                        </div>
 
+                        <div class="mrg-t-10">
+                            <label for="send_contract_ended_notification">
+                                Salji notifikaciju za istek ugovora
+                                <input class="mrg-l-5" id="send_contract_ended_notification" type="checkbox" @if ($send_contract_ended_notification == 1) checked @endif name="send_contract_ended_notification" value="1" />
+                            </label>
+                        </div>
+
+                        <div class="mrg-t-10">
+                            <label for="description">Beleska</label>
+                            <textarea class="form-control" name="description" id="description" rows="5">{!! $description !!}</textarea>
+                        </div>
+
+                        <div class="mrg-t-10">
                             <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
-
                             <a class="btn btn-default" href="{{ action('Company\CompanyController@show', ['id' => $company_id ]) }}" class="btn btn-default">Prekini</a>
-
                         </div>
 
                     </form>
