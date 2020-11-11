@@ -24,7 +24,7 @@
 
                             <li class="list-group-item">
                                 <a href="/company/show/{{ $company->id }}"> {{ $company->name }} </a>
-                                <span class="pull-right badge alert-info" title="Broj radnika za komitenta">{{ $company_cnt_workers[$company->id] }}@if($company_cnt_inactive_workers[$company->id]) <span title="Broj neaktivnih korisnika">({{ $company_cnt_inactive_workers[$company->id] }})</span>@endif</span>
+                                <span class="pull-right badge alert-info" title="Broj radnika za komitenta">{{ $company_cnt_workers[$company->id] }}@if (isset($company_cnt_active_workers[$company->id])) <span title="Broj aktivnih korisnika">({{ $company_cnt_active_workers[$company->id] }})</span>@endif</span>
                             </li>
 
                         @endforeach
