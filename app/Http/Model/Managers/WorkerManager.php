@@ -73,7 +73,7 @@ class WorkerManager
 
     public function countWorkersWhichContractRunOut()
     {
-        $sql = " SELECT COUNT(*) cnt from ".WorkerEntity::$tbl_name." where contract_end <= '".date('Y-m-d', (time() + 86400))."' AND (inactive <> 1 OR inactive IS NULL)";
+        $sql = " SELECT COUNT(*) cnt from ".WorkerEntity::$tbl_name." where contract_end <= '".date('Y-m-d', (time() + 86400))."' AND (inactive <> 1 OR inactive IS NULL) AND send_contract_ended_notification >= 1";
         //print $sql;
         $res = DB::select($sql);
         return $res[0]->cnt;
