@@ -161,46 +161,48 @@
 
                         <input type="hidden" name="fk_company" value="{{ $company_id }}">
 
-                        <div class="">
-                            <label for="name">Ime radnika</label>
+                        <div class="mrg-t-10">
+                            <label for="first_name">Ime radnika</label>
                             <input class="form-control" placeholder="" type="text" name="first_name" value="{{ $first_name }}">
                         </div>
 
-                        <div class="">
-                            <label for="name">Prezime radnika</label>
+                        <div class="mrg-t-10">
+                            <label for="last_name">Prezime radnika</label>
                             <input class="form-control" placeholder="" type="text" name="last_name" value="{{ $last_name }}">
                         </div>
 
-                        <div class="">
-                            <label for="name">Datum početka ugovora</label>
-                            <input class="form-control" placeholder="" type="text" name="contract_start" id="contract_start" value="{{ date('d.m.Y', strtotime($contract_start)) }}">
+                        <div class="mrg-t-10">
+                            <label for="contract_start">Datum početka ugovora</label>
+                            <input class="form-control" placeholder="" type="text" name="contract_start" id="contract_start" value="{{ date('d.m.Y', strtotime($contract_start)) }}" />
                         </div>
 
-                        <div class="">
-                            <label for="name">Datum kraja ugovora</label>
-                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ date('d.m.Y', strtotime($contract_end)) }}">
+                        <div class="mrg-t-10">
+                            <label for="contract_end">Datum kraja ugovora</label>
+                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ date('d.m.Y', strtotime($contract_end)) }}" />
                         </div>
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">JMBG</label>
-                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ $jmbg  }}">
+                            <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ $jmbg  }}" />
                         </div>
 
                         <div class="mrg-t-10">
                             <label for="inactive">
                                 Deaktiviraj radnika
+                                <div class="clearfix"></div>
                                 <input class="mrg-l-5" id="inactive" type="checkbox" @if ($status_val == 1) checked @endif name="inactive" id="jmbg" value="1">
                             </label>
                         </div>
 
                         <div class="mrg-t-10">
                             <label for="active_until_date">Aktivan do datuma</label>
-                            <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="@if ($active_until_date){{ date('d.m.Y', strtotime($active_until_date)) }}@endif">
+                            <input class="form-control" placeholder="" type="text" name="active_until_date" id="active_until_date" value="@if ($active_until_date){{ date('d.m.Y', strtotime($active_until_date)) }}@endif">
                         </div>
 
                         <div class="mrg-t-10">
                             <label for="send_contract_ended_notification">
                                 Salji notifikaciju za istek ugovora
+                                <div class="clearfix"></div>
                                 <input class="mrg-l-5" id="send_contract_ended_notification" type="checkbox" @if ($send_contract_ended_notification == 1) checked @endif name="send_contract_ended_notification" value="1" />
                             </label>
                         </div>
