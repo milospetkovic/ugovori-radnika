@@ -15,7 +15,7 @@ class NewColumnsForWorkersTable extends Migration
     {
         Schema::table('worker', function (Blueprint $table) {
             $table->date('active_until_date')->nullable()->after('jmbg')->comment('Date until worker should be marked as active');
-            $table->tinyInteger('ignore_contract_ended_notification')->nullable()->after('active_until_date')->comment('If flag is active then cron will not notify android users that contract is ended for the worker');
+            $table->tinyInteger('send_contract_ended_notification')->nullable(false)->default(1)->after('active_until_date')->comment('If flag is active then cron will not notify android users that contract is ended for the worker');
         });
     }
 
@@ -26,6 +26,8 @@ class NewColumnsForWorkersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('worker', function (Blueprint $table) {
+            $table->dropColumn(['send_contract_ended_notification', 'active_until_date']);
+        });
     }
 }

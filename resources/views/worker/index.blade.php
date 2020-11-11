@@ -136,9 +136,9 @@
                         </div>
 
                         <div class="mrg-t-10">
-                            <label for="ignore_contract_ended_notification">Ne salji notifikaciju za istek ugovora:</label>
+                            <label for="send_contract_ended_notification">Salji notifikaciju za istek ugovora:</label>
                             <div class="clearfix"></div>
-                            <input type="checkbox" @if(old('ignore_contract_ended_notification')) checked @endif name="ignore_contract_ended_notification" id="ignore_contract_ended_notification" value="1" />
+                            <input type="checkbox" checked name="send_contract_ended_notification" id="ignore_contract_ended_notification" value="1" />
                         </div>
 
                         <div class="mrg-t-10">
@@ -216,13 +216,7 @@
 
     <script type="text/javascript">
         $(function(){
-            $( "#contract_start").datetimepicker({
-                format: 'DD.MM.YYYY',
-                showTodayButton: true,
-                calendarWeeks: false
-            });
-
-            $( "#contract_end").datetimepicker({
+            $( "#contract_start, #contract_end, #active_until_date" ).datetimepicker({
                 format: 'DD.MM.YYYY',
                 showTodayButton: true,
                 calendarWeeks: false

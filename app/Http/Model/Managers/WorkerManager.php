@@ -26,7 +26,10 @@ class WorkerManager
                 'contract_start' => date('Y-m-d', strtotime($request->contract_start)),
                 'contract_end' => date('Y-m-d', strtotime($request->contract_end)),
                 'jmbg' => ($request->jmbg) ? $request->jmbg : NULL,
-                'inactive' => $request->inactive
+                'inactive' => $request->inactive,
+                'active_until_date' => ($request->active_until_date) ? date('Y-m-d', strtotime($request->active_until_date)) : NULL,
+                'send_contract_ended_notification' => ($request->send_contract_ended_notification) ? 1 : 0,
+                'description' => ($request->description) ? $request->description : NULL,
             ]);
 
         return $workerID;

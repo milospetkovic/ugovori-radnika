@@ -61,7 +61,7 @@ class WorkerController extends Controller
             'company_name' => $workerObj->company_name,
             'jmbg' => $workerObj->jmbg,
             'active_until_date' => $workerObj->active_until_date,
-            'send_contract_ended_notification' => ($workerObj->ignore_contract_ended_notification) ? 'NE' : 'DA',
+            'send_contract_ended_notification' => ($workerObj->send_contract_ended_notification) ? 'DA (notifikacije su ukljucene)' : 'NE (nece se slati notifikacije)',
             'status'=> ($workerObj->inactive) ? '<span class="badge text-danger text-uppercase" style="background: red !important">NEAKTIVAN</span>' : '<span class="badge text-success text-uppercase" style="background: green !important; opacity: 0.5;">Aktivan</span>',
             'description' => $workerObj->description
         ];
