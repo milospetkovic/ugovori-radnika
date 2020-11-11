@@ -37,6 +37,9 @@
                             <th>Kraj ugovora</th>
                             <th>JMBG</th>
                             <th>Status</th>
+                            <th>Aktivan do datuma</th>
+                            <th>Salji notifikaciju za istek ugovora</th>
+                            <th>Beleska</th>
                         </tr>
                     </thead>
 
@@ -71,6 +74,24 @@
                                         <span class="badge text-success text-muted" style="background: green !important; opacity: 0.5;">Aktivan</span>
                                     @endif
                                 </td>
+                                <td>
+                                    @if ($worker->active_until_date)
+                                        {{ date('d.m.Y', strtotime($worker->active_until_date)) }}
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if ($worker->send_contract_ended_notification)
+                                        DA
+                                    @else
+                                        NE
+                                    @endif
+                                </td>
+                                <td>
+                                    {!! nl2br(e($worker->description)) !!}
+                                </td>
+
+
                             </tr>
                         @endforeach
 
