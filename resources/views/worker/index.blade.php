@@ -82,7 +82,7 @@
 
                         <tr>
                             <td>Beleska:</td>
-                            <td>{!! $description !!}</td>
+                            <td>{!! nl2br(e($description)) !!}</td>
                         </tr>
 
                     </table>
