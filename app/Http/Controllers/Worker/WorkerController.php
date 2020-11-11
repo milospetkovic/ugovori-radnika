@@ -60,7 +60,10 @@ class WorkerController extends Controller
             'company_id' => $workerObj->company_id,
             'company_name' => $workerObj->company_name,
             'jmbg' => $workerObj->jmbg,
-            'status'=> ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan'
+            'active_until_date' => $workerObj->active_until_date,
+            'send_contract_ended_notification' => ($workerObj->ignore_contract_ended_notification) ? 'NE' : 'DA',
+            'status'=> ($workerObj->inactive) ? '<span class="badge text-danger text-uppercase" style="background: red !important">NEAKTIVAN</span>' : '<span class="badge text-success text-uppercase" style="background: green !important; opacity: 0.5;">Aktivan</span>',
+            'description' => $workerObj->description
         ];
 
         return view('worker.index', $data);
@@ -98,6 +101,7 @@ class WorkerController extends Controller
             'last_name'         => 'required|max:128',
             'contract_start'    => 'required|date',
             'contract_end'      => 'required|date',
+            'active_until_date' => 'date',
         ]);
 
         $workerID = $this->workerManager->storeWorker($request, $companyID);

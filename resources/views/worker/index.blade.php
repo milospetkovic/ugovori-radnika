@@ -63,7 +63,26 @@
 
                         <tr>
                             <td>Status radnika:</td>
-                            <td>{{ $status }}</td>
+                            <td>{!! $status !!}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Aktivan do datuma:</td>
+                            <td>
+                                @if ($active_until_date)
+                                    {{ date('d.m.Y', strtotime($active_until_date)) }}
+                                @endif
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Salji notifikaciju za istek ugovora:</td>
+                            <td>{{ $send_contract_ended_notification }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Beleska:</td>
+                            <td>{{ $description }}</td>
                         </tr>
 
                     </table>
@@ -86,35 +105,49 @@
 
                         <input type="hidden" name="fk_company" value="{{ $company_id }}">
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">Ime radnika</label>
                             <input class="form-control" placeholder="" type="text" name="first_name" value="{{ old('first_name') }}">
                         </div>
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">Prezime radnika</label>
                             <input class="form-control" placeholder="" type="text" name="last_name" value="{{ old('last_name') }}">
                         </div>
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">Datum početka ugovora</label>
                             <input class="form-control" placeholder="" type="text" name="contract_start" id="contract_start" value="{{ old('contract_start') }}">
                         </div>
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">Datum kraja ugovora</label>
                             <input class="form-control" placeholder="" type="text" name="contract_end" id="contract_end" value="{{ old('contract_end') }}">
                         </div>
 
-                        <div class="">
+                        <div class="mrg-t-10">
                             <label for="name">JMBG</label>
                             <input class="form-control" placeholder="" type="text" name="jmbg" id="jmbg" value="{{ old('jmbg') }}">
                         </div>
 
                         <div class="mrg-t-10">
+                            <label for="active_until_date">Aktivan do datuma</label>
+                            <input class="form-control" placeholder="" type="text" name="active_until_date" id="active_until_date" value="{{ old('active_until_date') }}">
+                        </div>
 
+                        <div class="mrg-t-10">
+                            <label for="ignore_contract_ended_notification">Ne salji notifikaciju za istek ugovora:</label>
+                            <div class="clearfix"></div>
+                            <input type="checkbox" @if(old('ignore_contract_ended_notification')) checked @endif name="ignore_contract_ended_notification" id="ignore_contract_ended_notification" value="1" />
+                        </div>
+
+                        <div class="mrg-t-10">
+                            <label for="description">Beleska</label>
+                            <textarea class="form-control" name="description" id="description" rows="5">{{ old('description') }}</textarea>
+                        </div>
+
+                        <div class="mrg-t-10">
                             <button type="submit" class="btn btn-success mrg-r-5"><span class="fa fa-check"></span> Sačuvaj</button>
-
                             <a class="btn btn-default" href="{{ action('Company\CompanyController@show', ['id' => $company_id ]) }}" class="btn btn-default">Prekini</a>
                         </div>
 
