@@ -52,3 +52,8 @@ Route::get('/worker/unactivateworkers', 'Worker\WorkerController@unactivateWorke
 Route::get('/android/token/{token}/{checkapptoken}', 'Android\TokenController@checkIfTokenShouldBeStored');
 
 
+Route::get("tt", function () {
+   return 'ok, test';
+});
+
+
