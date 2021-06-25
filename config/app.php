@@ -183,7 +183,10 @@ return [
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         //Laracasts\Flash\Flash::class
         Laracasts\Flash\FlashServiceProvider::class,
-        LaravelFCM\FCMServiceProvider::class
+        LaravelFCM\FCMServiceProvider::class,
+
+        // upgrade from initial 5.3.31 version of laravel
+        \Laravel\Tinker\TinkerServiceProvider::class, // 5.3 -> 5.4
 
 
     ],
