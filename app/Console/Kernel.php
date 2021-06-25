@@ -39,5 +39,7 @@ class Kernel extends ConsoleKernel
     protected function commands()
     {
         require base_path('routes/console.php');
+        // added during upgrade from 5.4 -> 5.5
+        $this->load(__DIR__.'/Commands');
     }
 }
