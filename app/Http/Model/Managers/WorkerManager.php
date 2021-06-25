@@ -57,7 +57,7 @@ class WorkerManager
 
     public function returnWorkersAndCompanies($companyID=null, $showUnactive=null)
     {
-        $query = DB::table(WorkerEntity::$tbl_name.' as w ')
+        $query = DB::table(WorkerEntity::$tbl_name.' as w')
             ->leftJoin('company as c','c.id','=','w.fk_company')
             ->select([ "w.*", "c.id as company_id", "c.name as company_name" ]);
         if ($companyID > 0) {
@@ -82,7 +82,7 @@ class WorkerManager
 
     public function getWorker($id)
     {
-        return DB::table(WorkerEntity::$tbl_name.' as w ')
+        return DB::table(WorkerEntity::$tbl_name.' as w')
             ->leftJoin('company as c','c.id','=','w.fk_company')
             ->select([ "w.*", "c.id as company_id", "c.name as company_name" ])
             ->where('w.id', $id)->first();
