@@ -27,19 +27,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the commands for the application.
      *
      * @return void
      */
     protected function commands()
     {
-        require base_path('routes/console.php');
-        // added during upgrade from 5.4 -> 5.5
         $this->load(__DIR__.'/Commands');
+
+        require base_path('routes/console.php');
     }
 }
