@@ -134,21 +134,31 @@ class WorkerController extends Controller
 
         $workerObj = $this->workerManager->getWorker($id);
 
-        $data = [ 'view_type' => 'edit',
-                  'id' => $workerObj->id,
-                  'first_name' => $workerObj->first_name,
-                  'last_name' => $workerObj->last_name,
-                  'contract_start' => $workerObj->contract_start,
-                  'contract_end' => $workerObj->contract_end,
-                  'company_name' => $companyObj->name,
-                  'company_id' => $companyObj->id,
-                  'jmbg' => $workerObj->jmbg,
-                  'status'=> ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan',
-                  'status_val' => $workerObj->inactive,
-                  'active_until_date' => $workerObj->active_until_date,
-                  'send_contract_ended_notification' => $workerObj->send_contract_ended_notification,
-                  'description' => $workerObj->description
-        ];
+
+        if ($workerObj) {
+            $data = [
+                'workerNotFound' => false,
+                'view_type' => 'edit',
+                'id' => $workerObj->id,
+                'first_name' => $workerObj->first_name,
+                'last_name' => $workerObj->last_name,
+                'contract_start' => $workerObj->contract_start,
+                'contract_end' => $workerObj->contract_end,
+                'company_name' => $companyObj->name,
+                'company_id' => $companyObj->id,
+                'jmbg' => $workerObj->jmbg,
+                'status' => ($workerObj->inactive) ? 'NEAKTIVAN' : 'Aktivan',
+                'status_val' => $workerObj->inactive,
+                'active_until_date' => $workerObj->active_until_date,
+                'send_contract_ended_notification' => $workerObj->send_contract_ended_notification,
+                'description' => $workerObj->description
+            ];
+        } else {
+            $data = [
+                'view_type' => 'notFound',
+                'workerNotFound' => true
+            ];
+        }
 
         return view('worker.index', $data);
     }
