@@ -6,14 +6,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "apility/laravel-fcm": "^1.4",
+        "barryvdh/laravel-ide-helper": "^2.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^6.0.1",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "barryvdh/laravel-ide-helper": "^2.4",
-        "brozot/laravel-fcm": "^1.2",
-        "laracasts/flash": "^3.0"
+        "laravel/ui": "^3.3",
+        "monolog/monolog": "^2.2"
     },
     "require-dev": {
       "facade/ignition": "^2.5",

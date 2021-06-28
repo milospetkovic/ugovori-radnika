@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 //Route::get('/company', 'Company\CompanyController@show');
 Route::get('/company/create', 'Company\CompanyController@create');
