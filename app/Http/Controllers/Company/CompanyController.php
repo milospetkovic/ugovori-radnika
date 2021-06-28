@@ -67,7 +67,7 @@ class CompanyController extends Controller
 
         flash(EventMessages::ACTION_SUCCESS, "success");
 
-        return redirect()->action('Company\CompanyController@create');
+        return redirect()->action('App\Http\Controllers\Company\CompanyController@create');
 
         // use if redirect should be to the newly created company
         //return redirect()->action('Company\CompanyController@show', ['id' => $companyID]);
@@ -169,11 +169,11 @@ class CompanyController extends Controller
 
         if ($res > 0) {
             flash(EventMessages::ACTION_SUCCESS, "success");
-            return redirect()->action('Company\CompanyController@listCompanies');
+            return redirect()->action('App\Http\Controllers\Company\CompanyController@listCompanies');
         }
 
         flash(EventMessages::ACTION_ERROR, "error");
-            return redirect()->action('Company\CompanyController@show', $id);
+            return redirect()->action('App\Http\Controllers\Company\CompanyController@show', $id);
     }
 
 

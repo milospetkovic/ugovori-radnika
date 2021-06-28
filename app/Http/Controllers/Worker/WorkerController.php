@@ -192,7 +192,7 @@ class WorkerController extends Controller
 
         if ($res > 0) {
             flash(EventMessages::ACTION_SUCCESS, "success");
-            return redirect()->action('Company\CompanyController@show', $companyID);
+            return redirect()->action('App\Http\Controllers\Company\CompanyController@show', $companyID);
         }
 
         flash(EventMessages::ACTION_ERROR, "error");
@@ -206,7 +206,7 @@ class WorkerController extends Controller
             flash($returnMesg, "warning");
         }
 
-        return redirect()->action('HomeController@index');
+        return redirect()->action('App\Http\Controllers\HomeController@index');
 
     }
 

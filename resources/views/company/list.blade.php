@@ -8,7 +8,7 @@
 
             <div class="panel-heading">
                 Lista komitenata
-                <a href="{{ action('HomeController@index') }}" class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
+                <a href="{{ action('App\Http\Controllers\HomeController@index') }}" class="btn btn-sm btn-default pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-default pull-right mrg-r-5"><i class="glyphicon glyphicon-circle-arrow-left"></i> Nazad</a>
                 <div class="clearfix">
                     <!-- -->

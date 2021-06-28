@@ -22,36 +22,36 @@ Auth::routes();
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 //Route::get('/company', 'Company\CompanyController@show');
-Route::get('/company/create', 'Company\CompanyController@create');
-Route::post('/company/store', 'Company\CompanyController@store');
-Route::get('/company/list', 'Company\CompanyController@listCompanies');
+Route::get('/company/create', 'App\Http\Controllers\Company\CompanyController@create');
+Route::post('/company/store', 'App\Http\Controllers\Company\CompanyController@store');
+Route::get('/company/list', 'App\Http\Controllers\Company\CompanyController@listCompanies');
 
-Route::get('/company/show/{id}', 'Company\CompanyController@show');
-Route::get('/company/delete/{id}', 'Company\CompanyController@delete');
+Route::get('/company/show/{id}', 'App\Http\Controllers\Company\CompanyController@show');
+Route::get('/company/delete/{id}', 'App\Http\Controllers\Company\CompanyController@delete');
 
-Route::get('/company/show/{id?}/worker/create', 'Worker\WorkerController@create')->name('create_worker_route');
-Route::post('/company/show/{id?}/worker/create', 'Worker\WorkerController@store');
+Route::get('/company/show/{id?}/worker/create', 'App\Http\Controllers\Worker\WorkerController@create')->name('create_worker_route');
+Route::post('/company/show/{id?}/worker/create', 'App\Http\Controllers\Worker\WorkerController@store');
 
 
-Route::get('/worker/show/{id}', 'Worker\WorkerController@show');
-Route::get('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@edit');
-Route::post('/company/show/{company_id}/worker/{id}/edit', 'Worker\WorkerController@update');
-Route::get('/company/show/{company_id}/worker/{id}/delete', 'Worker\WorkerController@delete');
+Route::get('/worker/show/{id}', 'App\Http\Controllers\Worker\WorkerController@show');
+Route::get('/company/show/{company_id}/worker/{id}/edit', 'App\Http\Controllers\Worker\WorkerController@edit');
+Route::post('/company/show/{company_id}/worker/{id}/edit', 'App\Http\Controllers\Worker\WorkerController@update');
+Route::get('/company/show/{company_id}/worker/{id}/delete', 'App\Http\Controllers\Worker\WorkerController@delete');
 
-Route::get('/worker/list/{id?}', 'Worker\WorkerController@listWorkers');
+Route::get('/worker/list/{id?}', 'App\Http\Controllers\Worker\WorkerController@listWorkers');
 
 //Route::get('/firebase', 'Firebase\FirebaseController@index');
 //Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
 
 
 Route::get('/fb/sendnotifications', 'Firebase\FirebaseBrozotController@sendNotifications');
-Route::get('/worker/unactivateworkers', 'Worker\WorkerController@unactivateWorkers');
+Route::get('/worker/unactivateworkers', 'App\Http\Controllers\Worker\WorkerController@unactivateWorkers');
 
 
 //Route::get('/firebase-v2', 'Firebase\FirebaseControllerV2@index');
 
 // URI to save token sent from android device: token - sent from android device, checkapptoken: string saved in .env file and in android app (must match)
-Route::get('/android/token/{token}/{checkapptoken}', 'Android\TokenController@checkIfTokenShouldBeStored');
+Route::get('/android/token/{token}/{checkapptoken}', 'App\Http\Controllers\Android\TokenController@checkIfTokenShouldBeStored');
 
 
 Route::get("tt", function () {

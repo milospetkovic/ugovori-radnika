@@ -7,7 +7,7 @@
 
             <div class="panel-body">
 
-                <form action="{{ action('Company\CompanyController@store') }}" method="post" class="form-horizontal">
+                <form action="{{ action('App\Http\Controllers\Company\CompanyController@store') }}" method="post" class="form-horizontal">
 
                     {{ csrf_field() }}
 
@@ -19,7 +19,7 @@
                     <div class="mrg-t-10">
                         <button type="submit" class="btn btn-primary m-r"><span class="fa fa-check"></span> Sačuvaj</button>
 
-                        <a class="btn btn-default" href="{{ action('HomeController@index') }}" class="btn btn-default">Prekini</a>
+                        <a class="btn btn-default" href="{{ action('App\Http\Controllers\HomeController@index') }}" class="btn btn-default">Prekini</a>
                     </div>
 
                 </form>

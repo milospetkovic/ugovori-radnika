@@ -5,7 +5,7 @@
         <div class="panel-heading">
             Lista radnika
             @if (!isset($company))
-                <a href="{{ action('HomeController@index') }}" class="btn btn-default btn-sm pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
+                <a href="{{ action('App\Http\Controllers\HomeController@index') }}" class="btn btn-default btn-sm pull-right"><i class="glyphicon glyphicon-home"></i> Početna strana</a>
             @endif
             <a href="{{ url()->previous() }}" class="btn btn-sm btn-default pull-right mrg-r-5"><i class="glyphicon glyphicon-circle-arrow-left"></i> Nazad</a>
             <div class="clearfix">
@@ -16,9 +16,9 @@
         <div class="panel-body">
 
             @if (isset($company))
-                <form method="get" action="{{ action('Company\CompanyController@show', ['id' => $company->id ]) }}">
+                <form method="get" action="{{ action('App\Http\Controllers\Company\CompanyController@show', ['id' => $company->id ]) }}">
             @else
-                 <form method="get" action="{{ action('Worker\WorkerController@listWorkers') }}">
+                 <form method="get" action="{{ action('App\Http\Controllers\Worker\WorkerController@listWorkers') }}">
             @endif
 
             <label>
