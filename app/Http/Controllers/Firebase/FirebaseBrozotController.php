@@ -46,7 +46,7 @@ class FirebaseBrozotController extends Controller
             flash($returnMesg, "warning");
         }
 
-        return redirect()->action('HomeController@index');
+        return redirect()->action('App\Http\Controllers\HomeController@index');
 
     }
 

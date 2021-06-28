@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="row mrg-t-10 text-center clearfix">
-                    <a class="btn btn-warning" href={{ action('Firebase\FirebaseBrozotController@sendNotifications') }}>Testiraj slanje notifikacija</a>
+                    <a class="btn btn-warning" href={{ action('App\Http\Controllers\Firebase\FirebaseBrozotController@sendNotifications') }}>Testiraj slanje notifikacija</a>
                 </div>
 
                 <div class="row mrg-t-10 text-center clearfix">
