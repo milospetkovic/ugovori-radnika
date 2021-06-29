@@ -32,6 +32,8 @@
 <body>
     <div id="app">
 
+        <app></app>
+
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -106,7 +108,7 @@
 
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
     <script src="/js/moment-timezone-with-data.min.js"></script>
     <script src="/js/moment-with-locales.min.js"></script>
     <script src="/js/bootstrap-datetimepicker.min.js"></script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,7 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return Company::orderBy('name', 'asc')->get();
     }
 
     /**
@@ -34,7 +35,10 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newCompany = new Company();
+        $newCompany->name = $request->get('name');
+        $newCompany->save();
+        return $newCompany;
     }
 
     /**
@@ -45,7 +49,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+        return $company;
     }
 
     /**
@@ -68,7 +73,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Company::find($id);
+        if ($company) {
+            $company->inactive = 1;
+            $company->save();
+            return $company;
+        }
+
+        return $this->notFoundCompanyWithId($id);
     }
 
     /**
@@ -79,6 +91,22 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+        if ($company) {
+            return $company->delete();
+        }
+
+        return $this->notFoundCompanyWithId($id);
     }
+
+    /**
+     * Return not found a model with specified id
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    private function notFoundCompanyWithId($id) {
+        return 'Not found company with specified id: '.$id;
+    }
+
 }
