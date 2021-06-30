@@ -109,7 +109,7 @@
     </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>
-    <script src="/js/moment-timezone-with-data.min.js"></script>
+    {{-- <script src="/js/moment-timezone-with-data.min.js"></script> --}}
     <script src="/js/moment-with-locales.min.js"></script>
     <script src="/js/bootstrap-datetimepicker.min.js"></script>
 
