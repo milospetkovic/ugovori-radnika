@@ -1,7 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.start')
 
 @section('content')
 
-    <p class="text-center">Hello, I'm start page for VUE app :)</p>
+<template>
+    <div>
+        Test
+        <router-view />
+    </div>
+</template>
 
-@endsection
+<script>
+    export default {
+        data() {
+            return {
+
+            }
+        },
+        name: "App"
+    }
+</script>
+
+

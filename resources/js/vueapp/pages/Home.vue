@@ -1,5 +1,5 @@
 <template>
     <div>
-        Home vue template
+        Home page - vue template
     </div>
 </template>

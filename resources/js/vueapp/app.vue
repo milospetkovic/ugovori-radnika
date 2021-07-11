@@ -1,5 +1,6 @@
 <template>
     <div>
+        APP VUE main template
         <router-view />
     </div>
 </template>

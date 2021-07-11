@@ -8,7 +8,6 @@ import App from './vueapp/app'
 import Vuetify from "vuetify/lib";
 import router from './vueapp/router'
 
-
 const vuetify = new Vuetify({})
 
 Vue.use(Vuetify)
