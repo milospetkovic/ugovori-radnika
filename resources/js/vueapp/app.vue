@@ -1,6 +1,6 @@
 <template>
     <div>
-        Hi from main vue template
+        <router-view />
     </div>
 </template>
 
