@@ -21,7 +21,9 @@ Auth::routes();
 
 //Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-Route::get('/', 'App\Http\Controllers\StartPageController@index');
+//Route::get('/', 'App\Http\Controllers\StartPageController@index');
+
+Route::get('/', [\App\Http\Controllers\StartPageController::class, 'index']);
 
 //Route::get('/company', 'Company\CompanyController@show');
 Route::get('/company/create', 'App\Http\Controllers\Company\CompanyController@create');
@@ -61,3 +63,7 @@ Route::get("tt", function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,6 +1,6 @@
-@extends('layouts.start')
+{{-- @extends('layouts.start') --}}
 
-@section('content')
+{{-- @section('content') --}}
 
 <template>
     <div>

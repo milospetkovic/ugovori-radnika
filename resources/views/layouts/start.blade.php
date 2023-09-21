@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>START layout{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -57,7 +57,7 @@
 
 </div>
 
-<script src="{{ mix('/js/app.js') }}"></script>
+{{--<script src="{{ mix('/js/app.js') }}"></script> --}}
 {{-- <script src="/js/moment-timezone-with-data.min.js"></script> --}}
 <script src="/js/moment-with-locales.min.js"></script>
 <script src="/js/bootstrap-datetimepicker.min.js"></script>

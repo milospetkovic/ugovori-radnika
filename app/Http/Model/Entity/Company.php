@@ -5,6 +5,8 @@ namespace App\Http\Model\Entity;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
+ * App\Http\Model\Entity\Company
+ *
  * @property Worker[] $workers
  * @property int $id
  * @property string $created_at
@@ -12,6 +14,16 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  * @property string $name
  * @property string $description
  * @property boolean $inactive
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereInactive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Company extends Eloquent
 {

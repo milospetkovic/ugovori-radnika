@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.48.2.
+ * Generated for Laravel 8.49.2.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1972,7 +1972,7 @@
          *
          * @param string $password
          * @param string $attribute
-         * @return bool|null 
+         * @return \App\Models\User|null 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -7394,6 +7394,8 @@
             /**
      * 
      *
+     * @method static \Illuminate\Log\Logger withContext(array $context = [])
+     * @method static \Illuminate\Log\Logger withoutContext()
      * @method static void write(string $level, string $message, array $context = [])
      * @method static void listen(\Closure $callback)
      * @see \Illuminate\Log\Logger
